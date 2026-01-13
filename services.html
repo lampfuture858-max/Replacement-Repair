@@ -46,9 +46,41 @@
     </section>
 
     <main class="container mx-auto px-4 py-12">
+        <!-- Services Overview -->
+        <div class="mb-8">
+            <h3 class="text-2xl font-bold text-slate-800 mb-4">服务概览</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+                <a href="#s1" class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md flex flex-col items-start">
+                    <img src="images/icon1.png" class="w-10 h-10 mb-3" alt="维修图标">
+                    <strong class="font-bold mb-1">来水/下水管维修</strong>
+                    <span class="text-xs text-gray-500">漏水、返水、不通、老管换新及密封修复。</span>
+                </a>
+                <a href="#s2" class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md flex flex-col items-start">
+                    <img src="images/icon2.png" class="w-10 h-10 mb-3" alt="疏通图标">
+                    <strong class="font-bold mb-1">疏通 & 挖街换管</strong>
+                    <span class="text-xs text-gray-500">高压水机、电脑摄像定位，必要时挖街换管。</span>
+                </a>
+                <a href="#s3" class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md flex flex-col items-start">
+                    <img src="images/icon3.png" class="w-10 h-10 mb-3" alt="水系统图标">
+                    <strong class="font-bold mb-1">水系统维修</strong>
+                    <span class="text-xs text-gray-500">总开关、阀门、水压排查、隐蔽漏水检测。</span>
+                </a>
+                <a href="#s4" class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md flex flex-col items-start">
+                    <img src="images/icon4.png" class="w-10 h-10 mb-3 invert" alt="热水炉图标">
+                    <strong class="font-bold mb-1">水泵/热水炉/暖气</strong>
+                    <span class="text-xs text-gray-500">抽水泵、热水炉、暖气炉安装与维修。</span>
+                </a>
+                <a href="#s5" class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md flex flex-col items-start">
+                    <img src="images/icon1.png" class="w-10 h-10 mb-3" alt="煤气图标">
+                    <strong class="font-bold mb-1">煤气管道检测</strong>
+                    <span class="text-xs text-gray-500">煤气泄漏排查、压力测试与合规维修。</span>
+                </a>
+            </div>
+        </div>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <h2 class="text-xl font-black mb-4">一、住宅 / 餐馆 / 商业来水、下水管维修</h2>
+                <h2 id="s1" class="text-xl font-black mb-4">一、住宅 / 餐馆 / 商业来水、下水管维修</h2>
                 <ul class="list-inside list-disc text-gray-600 space-y-2">
                     <li>来水管、下水管漏水快速查修与封堵</li>
                     <li>下水道堵塞、返水、不通诊断与疏通</li>
@@ -58,7 +90,7 @@
             </section>
 
             <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <h2 class="text-xl font-black mb-4">二、管道疏通 & 挖街换管</h2>
+                <h2 id="s2" class="text-xl font-black mb-4">二、管道疏通 & 挖街换管</h2>
                 <ul class="list-inside list-disc text-gray-600 space-y-2">
                     <li>室内外下水道专业疏通（手工 + 高压水机）</li>
                     <li>主下水管与街道主管堵塞定位与处理</li>
@@ -68,7 +100,7 @@
             </section>
 
             <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <h2 class="text-xl font-black mb-4">三、水系统维修与更换</h2>
+                <h2 id="s3" class="text-xl font-black mb-4">三、水系统维修与更换</h2>
                 <ul class="list-inside list-disc text-gray-600 space-y-2">
                     <li>来水总开关维修与更换</li>
                     <li>水压异常与异常水费排查</li>
@@ -78,7 +110,7 @@
             </section>
 
             <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <h2 class="text-xl font-black mb-4">四、水泵 / 热水炉 / 暖气系统</h2>
+                <h2 id="s4" class="text-xl font-black mb-4">四、水泵 / 热水炉 / 暖气系统</h2>
                 <ul class="list-inside list-disc text-gray-600 space-y-2">
                     <li>大型抽水泵安装、调试与维修</li>
                     <li>热水炉（Hot Water Heater）安装与更换</li>
@@ -87,7 +119,7 @@
                 </ul>
             </section>
 
-            <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 md:col-span-2">
+            <section id="s5" class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 md:col-span-2">
                 <h2 class="text-xl font-black mb-4">五、煤气管道检测与维修（安全第一）</h2>
                 <p class="text-gray-600 mb-3">提供专业煤气管道安全检测、泄漏排查与合规维修，严格按安全规范施工，确保居住与商用场所安全。</p>
                 <ul class="list-inside list-disc text-gray-600 space-y-2">
