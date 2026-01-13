@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>服务项目 - 昇通管道</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-50">
+
+    <div class="bg-red-600 text-white text-sm py-2 text-center font-bold px-4">
+        🚨 24小时纽约全境紧急维修热线: <a href="tel:3477268777" class="underline">347-726-8777</a> (杨生)
+    </div>
+
+    <nav class="glass-nav sticky top-0 z-50 border-b border-gray-100">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex flex-col">
+                <a href="index.html" class="text-2xl font-black text-slate-800 tracking-tight">昇通管道</a>
+                <span class="text-[10px] text-red-600 font-bold tracking-widest uppercase">Government Licensed</span>
+            </div>
+            <div class="hidden md:flex space-x-8 font-medium text-gray-600">
+                <a href="services.html" class="hover:text-red-600 transition font-bold text-red-600">服务项目</a>
+                <a href="index.html#equipment" class="hover:text-red-600 transition">专业设备</a>
+                <a href="index.html#process" class="hover:text-red-600 transition">服务流程</a>
+                <a href="blog.html" class="hover:text-red-600 transition">博客</a>
+                <a href="contact.html" class="hover:text-red-600 transition">联系我们</a>
+            </div>
+            <div class="flex items-center">
+                <button onclick="toggleQR()" class="bg-slate-800 text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-slate-700 transition flex items-center mr-3">
+                    <i class="fab fa-weixin mr-2"></i> 加微信咨询
+                </button>
+                <button onclick="toggleMobileMenu()" class="md:hidden ml-3 text-slate-800 bg-white/80 px-3 py-2 rounded-lg">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-bg h-[60vh] flex items-center justify-center text-white px-4 text-center">
+        <div class="max-w-3xl">
+            <h1 class="text-3xl md:text-4xl font-extrabold">我们的服务范围</h1>
+            <p class="text-sm md:text-base text-gray-200 mt-3">政府注册 · 合理收费 · 24小时紧急维修 — 覆盖住宅、餐馆与商业项目，经验丰富、诚信专业。</p>
+        </div>
+    </section>
+
+    <main class="container mx-auto px-4 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                <h2 class="text-xl font-black mb-4">一、住宅 / 餐馆 / 商业来水、下水管维修</h2>
+                <ul class="list-inside list-disc text-gray-600 space-y-2">
+                    <li>来水管、下水管漏水快速查修与封堵</li>
+                    <li>下水道堵塞、返水、不通诊断与疏通</li>
+                    <li>老旧管道维修与整段更换</li>
+                    <li>厨房与卫生间排水异常处理与密封修复</li>
+                </ul>
+            </section>
+
+            <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                <h2 class="text-xl font-black mb-4">二、管道疏通 & 挖街换管</h2>
+                <ul class="list-inside list-disc text-gray-600 space-y-2">
+                    <li>室内外下水道专业疏通（手工 + 高压水机）</li>
+                    <li>主下水管与街道主管堵塞定位与处理</li>
+                    <li>挖街换管、老旧街管更新与恢复通行</li>
+                    <li>油脂、树根与顽固堵塞清理（提供免费电脑摄像检测）</li>
+                </ul>
+            </section>
+
+            <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                <h2 class="text-xl font-black mb-4">三、水系统维修与更换</h2>
+                <ul class="list-inside list-disc text-gray-600 space-y-2">
+                    <li>来水总开关维修与更换</li>
+                    <li>水压异常与异常水费排查</li>
+                    <li>隐蔽漏水检测（含超声波与内窥镜）</li>
+                    <li>各类水管配件及阀门维修更换</li>
+                </ul>
+            </section>
+
+            <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                <h2 class="text-xl font-black mb-4">四、水泵 / 热水炉 / 暖气系统</h2>
+                <ul class="list-inside list-disc text-gray-600 space-y-2">
+                    <li>大型抽水泵安装、调试与维修</li>
+                    <li>热水炉（Hot Water Heater）安装与更换</li>
+                    <li>暖气炉（Boiler / Furnace）检修与维护</li>
+                    <li>暖气不热、异响、泄漏等故障诊断与修复</li>
+                </ul>
+            </section>
+
+            <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 md:col-span-2">
+                <h2 class="text-xl font-black mb-4">五、煤气管道检测与维修（安全第一）</h2>
+                <p class="text-gray-600 mb-3">提供专业煤气管道安全检测、泄漏排查与合规维修，严格按安全规范施工，确保居住与商用场所安全。</p>
+                <ul class="list-inside list-disc text-gray-600 space-y-2">
+                    <li>煤气管道完整性检查与压力测试</li>
+                    <li>煤气泄漏快速排查与临时处置</li>
+                    <li>煤气管维修、更换与合规加固</li>
+                </ul>
+            </section>
+        </div>
+
+        <div class="mt-8 text-center">
+            <a href="tel:3477268777" class="inline-block bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-xl font-bold">立即电话咨询 347-726-8777</a>
+            <button onclick="toggleQR()" class="ml-4 bg-white border border-gray-200 px-6 py-3 rounded-xl font-bold">扫码加微信咨询</button>
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 text-white py-16 px-4">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div>
+                <h3 class="text-2xl font-black mb-6">昇通管道</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-6">纽约专业的管道服务商，政府注册公司，24/7 紧急响应，收费透明。</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6">联系我们</h4>
+                <ul class="space-y-4 text-gray-400">
+                    <li><i class="fas fa-phone mr-3 text-red-500"></i>杨生: 347-726-8777</li>
+                    <li><i class="fas fa-map-marker-alt mr-3 text-red-500"></i>服务区域: 纽约五大区全覆盖</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6">扫码咨询</h4>
+                <div class="bg-white p-2 w-32 h-32 rounded-lg">
+                    <img src="images/Wechat1.png" alt="WeChat QR" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="qrModal" class="qr-modal fixed inset-0 bg-black/80 z-[100] items-center justify-center p-4">
+        <div class="bg-white p-8 rounded-2xl max-w-sm w-full text-center relative">
+            <button onclick="toggleQR()" class="absolute top-4 right-4 text-gray-400"><i class="fas fa-times text-xl"></i></button>
+            <h3 class="text-xl font-bold mb-4">扫码添加杨生微信</h3>
+            <img src="images/Wechat1.png" class="w-56 h-56 md:w-48 md:h-48 mx-auto mb-4 object-contain">
+            <p class="text-gray-500 text-sm">或搜索微信号: yw13829751079</p>
+        </div>
+    </div>
+
+    <div id="mobileMenu" class="mobile-menu">
+        <div class="menu-panel">
+            <button class="close-btn" onclick="toggleMobileMenu()"><i class="fas fa-times text-2xl text-gray-700"></i></button>
+            <div class="menu-links">
+                <a href="services.html" onclick="toggleMobileMenu()">服务项目</a>
+                <a href="index.html#equipment" onclick="toggleMobileMenu()">专业设备</a>
+                <a href="index.html#process" onclick="toggleMobileMenu()">服务流程</a>
+                <a href="blog.html" onclick="toggleMobileMenu()">博客</a>
+                <a href="contact.html" onclick="toggleMobileMenu()">联系我们</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
