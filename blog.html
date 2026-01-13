@@ -6,12 +6,7 @@
     <title>博客 - 昇通管道</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap');
-        body { font-family: 'Noto Sans SC', sans-serif; }
-        .glass-nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); }
-        .hero-bg { background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1542013936693-884638332954?auto=format&fit=crop&w=1600&q=80'); }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="bg-gray-50">
 
@@ -90,27 +85,21 @@
             <div>
                 <h4 class="font-bold mb-6">扫码咨询</h4>
                 <div class="bg-white p-2 w-32 h-32 rounded-lg">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=tel:3477268777" alt="WeChat QR" class="w-full h-full">
+                    <img src="images/Wechat2.png" alt="WeChat QR" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>
     </footer>
 
-    <div id="qrModal" class="qr-modal fixed inset-0 bg-black/80 z-[100] items-center justify-center p-4" style="display:none;">
+            <div id="qrModal" class="qr-modal fixed inset-0 bg-black/80 z-[100] items-center justify-center p-4">
         <div class="bg-white p-8 rounded-2xl max-w-sm w-full text-center relative">
             <button onclick="toggleQR()" class="absolute top-4 right-4 text-gray-400"><i class="fas fa-times text-xl"></i></button>
             <h3 class="text-xl font-bold mb-4">扫码添加杨生微信</h3>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=3477268777" class="w-48 h-48 mx-auto mb-4">
+            <img src="images/Wechat1.png" class="w-56 h-56 md:w-48 md:h-48 mx-auto mb-4 object-contain">
             <p class="text-gray-500 text-sm">或搜索微信号: yw13829751079</p>
         </div>
     </div>
 
-    <script>
-        function toggleQR() {
-            const el = document.getElementById('qrModal');
-            if (!el) return;
-            if (el.style.display === 'none' || el.style.display === '') el.style.display = 'flex'; else el.style.display = 'none';
-        }
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>

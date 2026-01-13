@@ -6,16 +6,7 @@
     <title>昇通管道 | 纽约专业管道疏通 & 24/7 紧急维修</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap');
-        body { font-family: 'Noto Sans SC', sans-serif; }
-        .glass-nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); }
-        .hero-bg { background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1542013936693-884638332954?auto=format&fit=crop&w=1600&q=80'); }
-        .step-line::after { content: ''; position: absolute; top: 50%; left: 100%; width: 100%; height: 2px; background: #e2e8f0; z-index: -1; }
-        @media (max-width: 768px) { .step-line::after { display: none; } }
-        .qr-modal { display: none; }
-        .qr-modal.active { display: flex; }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="bg-gray-50">
 
@@ -86,22 +77,22 @@
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-xl transition">
-                <img src="https://cdn-icons-png.flaticon.com/512/3256/3256372.png" class="w-16 h-16 mb-6">
+                <img src="images/icon1.png" class="w-16 h-16 mb-6">
                 <h3 class="text-xl font-bold mb-3">管道疏通维修</h3>
                 <p class="text-gray-500 text-sm leading-relaxed">住宅、餐厅、商业大楼来水/下水管漏水、堵塞、换新问题一站式解决。</p>
             </div>
             <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-xl transition border-t-4 border-t-red-500">
-                <img src="https://cdn-icons-png.flaticon.com/512/3563/3563415.png" class="w-16 h-16 mb-6">
+                <img src="images/icon2.png" class="w-16 h-16 mb-6">
                 <h3 class="text-xl font-bold mb-3">暖气热水系统</h3>
                 <p class="text-gray-500 text-sm leading-relaxed">专业维修安装各种抽水泵、热水炉、暖气炉、煤气管道检测及更换。</p>
             </div>
             <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-xl transition">
-                <img src="https://cdn-icons-png.flaticon.com/512/3144/3144468.png" class="w-16 h-16 mb-6">
+                <img src="images/icon3.png" class="w-16 h-16 mb-6">
                 <h3 class="text-xl font-bold mb-3">高压水机清洗</h3>
                 <p class="text-gray-500 text-sm leading-relaxed">针对餐厅、商业主管道，清理油脂、树根，恢复排水畅通。</p>
             </div>
             <div class="bg-slate-800 text-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition">
-                <img src="https://cdn-icons-png.flaticon.com/512/5753/5753818.png" class="w-16 h-16 mb-6 invert">
+                <img src="images/icon4.png" class="w-16 h-16 mb-6 invert">
                 <h3 class="text-xl font-bold mb-3 text-red-500">免费电脑验渠</h3>
                 <p class="text-gray-400 text-sm leading-relaxed">利用专业内窥镜精准查找堵塞点，不乱开墙、不走弯路。</p>
             </div>
@@ -120,7 +111,7 @@
                 <div class="flex-1 text-center relative z-10 w-full">
                     <div class="w-16 h-16 bg-red-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-xl step-line">2</div>
                     <h4 class="font-bold text-lg mb-2">专业技师到场</h4>
-                    <p class="text-gray-500 text-sm">30-60分钟快速抵达，现场电脑测绘检测</p>
+                    <p class="text-gray-500 text-sm">小时级快速抵达，现场电脑测绘检测</p>
                 </div>
                 <div class="flex-1 text-center relative z-10 w-full">
                     <div class="w-16 h-16 bg-red-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-xl">3</div>
@@ -153,7 +144,7 @@
             <div>
                 <h4 class="font-bold mb-6">扫码咨询</h4>
                 <div class="bg-white p-2 w-32 h-32 rounded-lg">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=tel:3477268777" alt="WeChat QR" class="w-full h-full">
+                    <img src="images/Wechat2.png" alt="WeChat QR" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>
@@ -163,7 +154,7 @@
         <div class="bg-white p-8 rounded-2xl max-w-sm w-full text-center relative">
             <button onclick="toggleQR()" class="absolute top-4 right-4 text-gray-400"><i class="fas fa-times text-xl"></i></button>
             <h3 class="text-xl font-bold mb-4">扫码添加杨生微信</h3>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=3477268777" class="w-48 h-48 mx-auto mb-4">
+            <img src="images/Wechat1.png" class="w-56 h-56 md:w-48 md:h-48 mx-auto mb-4 object-contain">
             <p class="text-gray-500 text-sm">或搜索微信号: yw13829751079</p>
         </div>
     </div>
@@ -177,10 +168,6 @@
         </button>
     </div>
 
-    <script>
-        function toggleQR() {
-            document.getElementById('qrModal').classList.toggle('active');
-        }
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>
