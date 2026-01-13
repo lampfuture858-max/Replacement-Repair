@@ -30,8 +30,22 @@
             <button onclick="toggleQR()" class="bg-slate-800 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-slate-700 transition flex items-center">
                 <i class="fab fa-weixin mr-2"></i> 加微信咨询
             </button>
+            <button onclick="toggleMobileMenu()" class="md:hidden ml-3 text-slate-800 bg-white/80 px-3 py-2 rounded-lg">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
+
+    <div id="mobileMenu" class="mobile-menu">
+        <button class="close-btn" onclick="toggleMobileMenu()"><i class="fas fa-times text-2xl text-gray-700"></i></button>
+        <div class="menu-links">
+            <a href="#services" onclick="toggleMobileMenu()">服务项目</a>
+            <a href="#equipment" onclick="toggleMobileMenu()">专业设备</a>
+            <a href="#process" onclick="toggleMobileMenu()">服务流程</a>
+            <a href="blog.html" onclick="toggleMobileMenu()">博客</a>
+            <a href="contact.html" onclick="toggleMobileMenu()">联系我们</a>
+        </div>
+    </div>
 
     <section class="hero-bg h-[70vh] flex items-center justify-center text-white px-4 text-center">
         <div class="max-w-3xl">

@@ -14,3 +14,14 @@ document.addEventListener('DOMContentLoaded', function(){
         });
     }
 });
+
+function toggleMobileMenu() {
+    var el = document.getElementById('mobileMenu');
+    if (!el) return;
+    el.classList.toggle('active');
+}
+
+window.addEventListener('resize', function(){
+    var el = document.getElementById('mobileMenu');
+    if (el && window.innerWidth >= 768) el.classList.remove('active');
+});
