@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系我们 - 昇通管道</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap');
+        body { font-family: 'Noto Sans SC', sans-serif; }
+        .glass-nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <div class="bg-red-600 text-white text-sm py-2 text-center font-bold px-4">
+        🚨 24小时纽约全境紧急维修热线: <a href="tel:3477268777" class="underline">347-726-8777</a> (杨生)
+    </div>
+
+    <nav class="glass-nav sticky top-0 z-50 border-b border-gray-100">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex flex-col">
+                <a href="index.html" class="text-2xl font-black text-slate-800 tracking-tight">昇通管道</a>
+                <span class="text-[10px] text-red-600 font-bold tracking-widest uppercase">Government Licensed</span>
+            </div>
+            <div class="hidden md:flex space-x-8 font-medium text-gray-600">
+                <a href="index.html#services" class="hover:text-red-600 transition">服务项目</a>
+                <a href="index.html#equipment" class="hover:text-red-600 transition">专业设备</a>
+                <a href="index.html#process" class="hover:text-red-600 transition">服务流程</a>
+                <a href="blog.html" class="hover:text-red-600 transition">博客</a>
+                <a href="contact.html" class="hover:text-red-600 transition font-bold text-red-600">联系我们</a>
+            </div>
+            <button onclick="toggleQR()" class="bg-slate-800 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-slate-700 transition flex items-center">
+                <i class="fab fa-weixin mr-2"></i> 加微信咨询
+            </button>
+        </div>
+    </nav>
+
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h1 class="text-3xl font-black mb-4">联系我们</h1>
+            <p class="text-gray-600 mb-6">有维修需求、报价咨询或合作请通过以下方式联系我们，或填写下方表单，我们会尽快回复。</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="font-bold mb-4">电话与地址</h3>
+                    <p class="text-gray-700 mb-2"><i class="fas fa-phone mr-2 text-red-500"></i> 杨生: <a href="tel:3477268777" class="text-red-600 font-bold">347-726-8777</a></p>
+                    <p class="text-gray-700 mb-2"><i class="fas fa-map-marker-alt mr-2 text-red-500"></i> 服务区域: 纽约五大区</p>
+                    <p class="text-gray-700 mb-2"><i class="fas fa-clock mr-2 text-red-500"></i> 24/7 全天候服务</p>
+
+                    <div class="mt-6">
+                        <h4 class="font-bold mb-2">微信扫码</h4>
+                        <div class="bg-white p-2 w-40 h-40 rounded-lg">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=3477268777" alt="WeChat QR" class="w-full h-full">
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <form id="contactForm" class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                        <label class="block mb-3">
+                            <span class="text-sm font-medium">姓名</span>
+                            <input type="text" name="name" required class="mt-1 block w-full rounded-md border-gray-200 shadow-sm" placeholder="您的姓名">
+                        </label>
+                        <label class="block mb-3">
+                            <span class="text-sm font-medium">电话</span>
+                            <input type="tel" name="phone" required class="mt-1 block w-full rounded-md border-gray-200 shadow-sm" placeholder="347-726-8777">
+                        </label>
+                        <label class="block mb-3">
+                            <span class="text-sm font-medium">邮箱（可选）</span>
+                            <input type="email" name="email" class="mt-1 block w-full rounded-md border-gray-200 shadow-sm" placeholder="you@example.com">
+                        </label>
+                        <label class="block mb-4">
+                            <span class="text-sm font-medium">留言 / 问题描述</span>
+                            <textarea name="message" rows="4" class="mt-1 block w-full rounded-md border-gray-200 shadow-sm" placeholder="请描述您的问题及地址"></textarea>
+                        </label>
+                        <div class="flex items-center justify-between">
+                            <button type="submit" class="bg-red-600 text-white px-6 py-2 rounded-xl font-bold">发送留言</button>
+                            <a href="tel:3477268777" class="text-sm text-gray-500">或直接拨打 347-726-8777</a>
+                        </div>
+                        <p id="formNote" class="text-sm text-green-600 mt-4 hidden">感谢，信息已发送（示例页面，未连接后端）。</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-white py-16 px-4">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div>
+                <h3 class="text-2xl font-black mb-6">昇通管道</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-6">纽约专业的管道服务商，拥有多年住宅与商业维修经验。</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6">联系我们</h4>
+                <ul class="space-y-4 text-gray-400">
+                    <li><i class="fas fa-phone mr-3 text-red-500"></i>杨生: 347-726-8777</li>
+                    <li><i class="fas fa-map-marker-alt mr-3 text-red-500"></i>服务区域: 纽约五大区全覆盖</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6">扫码咨询</h4>
+                <div class="bg-white p-2 w-32 h-32 rounded-lg">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=tel:3477268777" alt="WeChat QR" class="w-full h-full">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleQR() {
+            const el = document.querySelector('.qr-modal');
+            if (!el) return;
+            el.classList.toggle('active');
+        }
+
+        document.getElementById('contactForm').addEventListener('submit', function(e){
+            e.preventDefault();
+            document.getElementById('formNote').classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
