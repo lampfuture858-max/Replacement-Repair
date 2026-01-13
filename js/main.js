@@ -25,3 +25,20 @@ window.addEventListener('resize', function(){
     var el = document.getElementById('mobileMenu');
     if (el && window.innerWidth >= 768) el.classList.remove('active');
 });
+
+function openWeChat() {
+    var start = Date.now();
+    try {
+        var iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = 'weixin://';
+        document.body.appendChild(iframe);
+        setTimeout(function(){
+            try { document.body.removeChild(iframe); } catch(e){}
+            if (Date.now() - start < 1400) toggleQR();
+        }, 1200);
+    } catch (e) {
+        // fallback
+        toggleQR();
+    }
+}
