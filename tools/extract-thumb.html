@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>提取视频第一帧</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;padding:20px;background:#f7fafc}
+    .wrap{max-width:760px;margin:0 auto;background:#fff;padding:18px;border-radius:8px;box-shadow:0 6px 18px rgba(2,6,23,0.06)}
+    video{width:100%;height:auto;border-radius:6px;background:#000}
+    canvas{width:100%;display:block;margin-top:12px}
+    .row{display:flex;gap:8px;margin-top:12px}
+    button{padding:10px 14px;border-radius:8px;border:0;background:#ef4444;color:#fff;font-weight:700}
+    a.btn{display:inline-block;padding:10px 14px;border-radius:8px;background:#111827;color:#fff;text-decoration:none}
+    p.note{color:#475569;margin-top:12px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h2>从视频提取第一帧（保存为 images/cocina-thumb.jpg）</h2>
+    <p class="note">如果浏览器阻止直接访问本地文件，请用本地服务器打开（见下方说明）。</p>
+
+    <video id="video" controls preload="metadata">
+      <source src="/videos/cocina.mp4" type="video/mp4">
+      您的浏览器不支持视频预览。
+    </video>
+
+    <canvas id="canvas"></canvas>
+
+    <div class="row">
+      <button id="capture">捕获第一帧</button>
+      <a id="download" class="btn" download="cocina-thumb.jpg">下载缩略图</a>
+    </div>
+
+    <p class="note">使用说明：<br>1. 若直接双击打开可能因浏览器安全策略无法加载视频，请运行本地服务器（例如 `python -m http.server 8000`）并访问 <code>http://localhost:8000/tools/extract-thumb.html</code>。<br>2. 点击“捕获第一帧”按钮，页面会在视频当前帧画到画布上。<br>3. 点击“下载缩略图”保存图片，保存时请选择或重命名为 <code>images/cocina-thumb.jpg</code> 放入项目。</p>
+  </div>
+
+<script>
+const video = document.getElementById('video');
+const canvas = document.getElementById('canvas');
+const captureBtn = document.getElementById('capture');
+const downloadLink = document.getElementById('download');
+
+function drawFrame(){
+  const w = video.videoWidth || 640;
+  const h = video.videoHeight || 360;
+  canvas.width = w;
+  canvas.height = h;
+  const ctx = canvas.getContext('2d');
+  ctx.drawImage(video, 0, 0, w, h);
+  // prepare download
+  canvas.toBlob(function(blob){
+    const url = URL.createObjectURL(blob);
+    downloadLink.href = url;
+    downloadLink.download = 'cocina-thumb.jpg';
+  }, 'image/jpeg', 0.92);
+}
+
+captureBtn.addEventListener('click', function(){
+  // seek to start then draw when frame available
+  try{
+    video.currentTime = 0;
+  }catch(e){}
+  // if metadata already loaded, draw on loadeddata
+  if (video.readyState >= 2) {
+    drawFrame();
+  } else {
+    video.addEventListener('loadeddata', function handler(){
+      drawFrame();
+      video.removeEventListener('loadeddata', handler);
+    });
+  }
+});
+</script>
+</body>
+</html>
