@@ -39,10 +39,14 @@
                 <a href="blog.html" class="hover:text-red-600 transition">博客</a>
                 <a href="contact.html" class="hover:text-red-600 transition font-bold text-red-600">联系我们</a>
             </div>
-            <button onclick="toggleQR()" class="bg-slate-800 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-slate-700 transition flex items-center">
-                <i class="fab fa-weixin mr-2"></i> 加微信咨询
-            </button>
-            <button onclick="toggleMobileMenu()" class="md:hidden ml-3 text-slate-800 bg-white/80 px-3 py-2 rounded-lg">
+            <div class="flex items-center gap-2 md:gap-0">
+                <button onclick="toggleQR()" class="bg-slate-800 text-white px-4 md:px-5 py-2 rounded-full text-sm font-bold hover:bg-slate-700 transition flex items-center whitespace-nowrap">
+                    <i class="fab fa-weixin mr-2"></i> <span class="hidden md:inline">加微信咨询</span><span class="md:hidden">微信</span>
+                </button>
+                <button onclick="toggleMobileMenu()" class="md:hidden text-slate-800 bg-white/80 px-3 py-2 rounded-lg">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
                 <i class="fas fa-bars"></i>
             </button>
         </div>
