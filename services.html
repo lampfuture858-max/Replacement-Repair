@@ -240,13 +240,26 @@
         <div class="bg-white rounded-2xl relative">
             <button onclick="closeServiceDetail()" class="absolute top-4 right-4 text-gray-400 z-10"><i class="fas fa-times text-2xl"></i></button>
             <div class="p-8 overflow-y-auto" style="max-height: calc(100vh - 4rem);">
-                <img id="serviceIcon" src="" class="w-20 h-20 mb-6" alt="服务图标">
-                <h2 id="serviceTitle" class="text-2xl font-black mb-6"></h2>
-                <p id="serviceDesc" class="text-gray-600 mb-4 hidden"></p>
-                <ul id="serviceItems" class="list-inside list-disc text-gray-600 space-y-3"></ul>
-                <div class="mt-8 flex gap-4 flex-wrap">
-                    <a href="tel:3477268777" class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-xl font-bold flex-1 min-w-max text-center">立即拨号</a>
-                    <button onclick="toggleQR(); closeServiceDetail();" class="bg-gray-100 hover:bg-gray-200 px-6 py-3 rounded-xl font-bold flex-1 min-w-max">微信咨询</button>
+                <div class="flex items-start gap-4 mb-6">
+                    <img id="serviceIcon" src="" class="w-20 h-20" alt="服务图标">
+                    <div>
+                        <h2 id="serviceTitle" class="text-2xl font-black mb-2"></h2>
+                        <p id="serviceShortDesc" class="text-gray-600 text-sm leading-relaxed hidden"></p>
+                    </div>
+                </div>
+                
+                <div id="serviceFeatures" class="mb-6 pb-6 border-b"></div>
+                
+                <div class="mb-6">
+                    <h3 class="font-bold text-lg mb-3 text-slate-800">服务项目详情</h3>
+                    <ul id="serviceItems" class="list-inside list-disc text-gray-600 space-y-2"></ul>
+                </div>
+                
+                <p id="serviceDesc" class="text-gray-600 mb-6 pb-6 border-b text-sm hidden"></p>
+                
+                <div class="flex gap-3 flex-wrap">
+                    <a href="tel:3477268777" class="flex-1 bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-xl font-bold text-center text-sm">📄 立即拨号</a>
+                    <button onclick="toggleQR(); closeServiceDetail();" class="flex-1 bg-gray-100 hover:bg-gray-200 px-4 py-3 rounded-xl font-bold text-sm">微信咨询</button>
                 </div>
             </div>
         </div>
