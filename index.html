@@ -55,11 +55,11 @@
                         <i class="fas fa-chevron-down" id="serviceChevron"></i>
                     </button>
                     <div id="serviceSubmenu" class="hidden">
-                        <a href="services.html#s1" onclick="toggleMobileMenu()">来水/下水管维修</a>
-                        <a href="services.html#s2" onclick="toggleMobileMenu()">疏通 & 挖街换管</a>
-                        <a href="services.html#s3" onclick="toggleMobileMenu()">水系统维修</a>
-                        <a href="services.html#s4" onclick="toggleMobileMenu()">水泵/热水炉/暖气</a>
-                        <a href="services.html#s5" onclick="toggleMobileMenu()">煤气管道检测</a>
+                        <a href="javascript:void(0)" onclick="window.innerWidth < 768 ? showService('s1') : (window.location.href='services.html#s1'); toggleMobileMenu()">来水/下水管维修</a>
+                        <a href="javascript:void(0)" onclick="window.innerWidth < 768 ? showService('s2') : (window.location.href='services.html#s2'); toggleMobileMenu()">疏通 & 挖街换管</a>
+                        <a href="javascript:void(0)" onclick="window.innerWidth < 768 ? showService('s3') : (window.location.href='services.html#s3'); toggleMobileMenu()">水系统维修</a>
+                        <a href="javascript:void(0)" onclick="window.innerWidth < 768 ? showService('s4') : (window.location.href='services.html#s4'); toggleMobileMenu()">水泵/热水炉/暖气</a>
+                        <a href="javascript:void(0)" onclick="window.innerWidth < 768 ? showService('s5') : (window.location.href='services.html#s5'); toggleMobileMenu()">煤气管道检测</a>
                     </div>
                 </div>
                 <a href="services.html#equipment" onclick="toggleMobileMenu()">专业设备</a>
@@ -204,6 +204,23 @@
             <img src="images/Wechat1.png" class="w-56 h-56 md:w-48 md:h-48 mx-auto mb-4 object-contain">
             <div class="mt-2">
                 <button onclick="copyWeChat()" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md font-bold">复制微信号 yw13829751079</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Service Detail Modal -->
+    <div id="serviceDetailModal" class="fixed inset-0 bg-black/50 z-[100] items-center justify-center p-4 hidden md:flex">
+        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-auto relative">
+            <button onclick="closeServiceDetail()" class="absolute top-4 right-4 text-gray-400 z-10"><i class="fas fa-times text-2xl"></i></button>
+            <div class="p-8">
+                <img id="serviceIcon" src="" class="w-20 h-20 mb-6" alt="服务图标">
+                <h2 id="serviceTitle" class="text-2xl font-black mb-6"></h2>
+                <p id="serviceDesc" class="text-gray-600 mb-4 hidden"></p>
+                <ul id="serviceItems" class="list-inside list-disc text-gray-600 space-y-3"></ul>
+                <div class="mt-8 flex gap-4">
+                    <a href="tel:3477268777" class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-xl font-bold">立即拨号</a>
+                    <button onclick="toggleQR(); closeServiceDetail();" class="bg-gray-100 hover:bg-gray-200 px-6 py-3 rounded-xl font-bold">微信咨询</button>
+                </div>
             </div>
         </div>
     </div>
