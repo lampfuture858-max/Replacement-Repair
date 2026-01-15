@@ -49,3 +49,30 @@ body { font-family: 'Noto Sans SC', sans-serif; }
 .service-dropdown { position: relative; }
 .service-dropdown:hover > a { color: #dc2626; }
 .service-dropdown:hover > div { display: block; }
+
+/* Service detail modal */
+#serviceDetailModal { 
+	display: none; 
+	position: fixed; 
+	top: 0; 
+	left: 0; 
+	right: 0; 
+	bottom: 0; 
+	z-index: 100; 
+	background: rgba(0,0,0,0.5); 
+	align-items: center; 
+	justify-content: center; 
+	padding: 1rem;
+	overflow-y: auto;
+}
+#serviceDetailModal.active { 
+	display: flex; 
+}
+#serviceDetailModal .bg-white { 
+	max-width: 42rem; 
+	width: 100%; 
+	max-height: 90vh; 
+	overflow-y: auto;
+	border-radius: 1rem;
+	position: relative;
+}
