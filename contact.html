@@ -21,7 +21,16 @@
                 <span class="text-[10px] text-red-600 font-bold tracking-widest uppercase">Government Licensed</span>
             </div>
             <div class="hidden md:flex space-x-8 font-medium text-gray-600">
-                <a href="services.html" class="hover:text-red-600 transition">服务项目</a>
+                <div class="service-dropdown relative group">
+                    <a href="services.html" class="hover:text-red-600 transition py-2">服务项目</a>
+                    <div class="absolute left-0 top-full hidden group-hover:block bg-white border border-gray-100 rounded-lg shadow-lg z-50 min-w-48 mt-1">
+                        <a href="services.html#s1" class="block px-4 py-3 hover:bg-red-50 hover:text-red-600 transition">来水/下水管维修</a>
+                        <a href="services.html#s2" class="block px-4 py-3 hover:bg-red-50 hover:text-red-600 transition">疏通 & 挖街换管</a>
+                        <a href="services.html#s3" class="block px-4 py-3 hover:bg-red-50 hover:text-red-600 transition">水系统维修</a>
+                        <a href="services.html#s4" class="block px-4 py-3 hover:bg-red-50 hover:text-red-600 transition">水泵/热水炉/暖气</a>
+                        <a href="services.html#s5" class="block px-4 py-3 hover:bg-red-50 hover:text-red-600 transition border-t border-gray-100">煤气管道检测</a>
+                    </div>
+                </div>
                 <a href="services.html#equipment" class="hover:text-red-600 transition">专业设备</a>
                 <a href="services.html#process" class="hover:text-red-600 transition">服务流程</a>
                 <a href="blog.html" class="hover:text-red-600 transition">博客</a>
@@ -112,7 +121,19 @@
         <div class="menu-panel">
             <button class="close-btn" onclick="toggleMobileMenu()"><i class="fas fa-times text-2xl text-gray-700"></i></button>
             <div class="menu-links">
-                <a href="index.html#services" onclick="toggleMobileMenu()">服务项目</a>
+                <div class="service-mobile-item">
+                    <button type="button" onclick="toggleServiceSubmenu()" class="w-full flex items-center justify-between">
+                        <span>服务项目</span>
+                        <i class="fas fa-chevron-down" id="serviceChevron"></i>
+                    </button>
+                    <div id="serviceSubmenu" class="hidden">
+                        <a href="services.html#s1" onclick="toggleMobileMenu()">来水/下水管维修</a>
+                        <a href="services.html#s2" onclick="toggleMobileMenu()">疏通 & 挖街换管</a>
+                        <a href="services.html#s3" onclick="toggleMobileMenu()">水系统维修</a>
+                        <a href="services.html#s4" onclick="toggleMobileMenu()">水泵/热水炉/暖气</a>
+                        <a href="services.html#s5" onclick="toggleMobileMenu()">煤气管道检测</a>
+                    </div>
+                </div>
                 <a href="services.html#equipment" onclick="toggleMobileMenu()">专业设备</a>
                 <a href="services.html#process" onclick="toggleMobileMenu()">服务流程</a>
                 <a href="blog.html" onclick="toggleMobileMenu()">博客</a>
