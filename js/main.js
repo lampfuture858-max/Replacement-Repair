@@ -4,6 +4,8 @@ function toggleQR() {
     el.classList.toggle('active');
 }
 
+
+
 document.addEventListener('DOMContentLoaded', function(){
     var form = document.getElementById('contactForm');
     if (form) {
@@ -25,6 +27,20 @@ window.addEventListener('resize', function(){
     var el = document.getElementById('mobileMenu');
     if (el && window.innerWidth >= 768) el.classList.remove('active');
 });
+
+function toggleServiceSubmenu() {
+    var submenu = document.getElementById('serviceSubmenu');
+    var chevron = document.getElementById('serviceChevron');
+    if (!submenu) return;
+    submenu.classList.toggle('hidden');
+    if (chevron) {
+        if (submenu.classList.contains('hidden')) {
+            chevron.classList.remove('rotate');
+        } else {
+            chevron.classList.add('rotate');
+        }
+    }
+}
 function copyWeChat() {
     var id = 'yw13829751079';
     function showToast(msg) {
