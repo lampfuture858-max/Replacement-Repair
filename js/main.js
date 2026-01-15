@@ -94,6 +94,7 @@ var servicesData = {
     s1: {
         title: '住宅 / 餐馆 / 商业来水、下水管维修',
         icon: 'images/icon1.png',
+        iconType: 'image',
         coverImage: 'images/hero.jpg',
         description: '专业诊断与快速修复，涵盖住宅到商业场景的全系列管道问题',
         shortDesc: '来水管、下水管漏水快速查修与封堵，下水道堵塞、返水诊断与疏通，老旧管道维修与整段更换，厨房与卫生间排水异常处理。',
@@ -113,6 +114,7 @@ var servicesData = {
     s2: {
         title: '管道疏通 & 挖街换管',
         icon: 'images/icon2.png',
+        iconType: 'image',
         coverImage: 'images/hero.jpg',
         description: '专业高压疏通设备，处理餐厅油脂、树根、顽固堵塞与街管问题',
         shortDesc: '室内外下水道专业疏通，主下水管与街道主管堵塞定位处理，挖街换管、老旧街管更新，油脂树根顽固堵塞清理。',
@@ -132,6 +134,7 @@ var servicesData = {
     s3: {
         title: '水系统维修与更换',
         icon: 'images/icon3.png',
+        iconType: 'image',
         coverImage: 'images/hero.jpg',
         description: '全屋水系统检测、维修、更新，解决水压、漏水、水质问题',
         shortDesc: '来水总开关维修与更换，水压异常与异常水费排查，隐蔽漏水检测，各类水管配件及阀门维修更换。',
@@ -151,6 +154,7 @@ var servicesData = {
     s4: {
         title: '水泵 / 热水炉 / 暖气系统',
         icon: 'images/icon4.png',
+        iconType: 'image',
         coverImage: 'images/hero.jpg',
         description: '大型设备安装、维修、保养，确保全年供水供暖稳定',
         shortDesc: '大型抽水泵安装调试维修，热水炉安装与更换，暖气炉检修与维护，暖气不热异响泄漏诊断修复。',
@@ -169,7 +173,8 @@ var servicesData = {
     },
     s5: {
         title: '煤气管道检测与维修',
-        icon: 'images/icon3.png',
+        icon: 'fa-fire-extinguisher',
+        iconType: 'fontawesome',
         coverImage: 'images/hero.jpg',
         description: '严格遵守安全规范，提供专业煤气管道检测与合规维修',
         shortDesc: '煤气管道完整性检查与压力测试，煤气泄漏快速排查与临时处置，煤气管维修、更换与合规加固。',
@@ -201,9 +206,34 @@ function showService(serviceId) {
     var descEl = modal.querySelector('#serviceDesc');
     var shortDescEl = modal.querySelector('#serviceShortDesc');
     var featuresEl = modal.querySelector('#serviceFeatures');
+    var iconContainerEl = iconEl ? iconEl.parentElement : null;
     
     if (titleEl) titleEl.textContent = data.title;
-    if (iconEl) iconEl.src = data.icon;
+    
+    // Handle icon - Font Awesome or image
+    if (data.iconType === 'fontawesome' && iconContainerEl) {
+        iconEl.style.display = 'none';
+        
+        var faIcon = iconContainerEl.querySelector('.fa-icon');
+        if (!faIcon) {
+            faIcon = document.createElement('div');
+            faIcon.className = 'fa-icon text-red-600 flex-shrink-0';
+            faIcon.style.fontSize = '80px';
+            iconContainerEl.insertBefore(faIcon, iconEl);
+        }
+        
+        faIcon.className = 'fa-icon text-red-600 flex-shrink-0';
+        faIcon.style.fontSize = '80px';
+        faIcon.innerHTML = '<i class="fas ' + data.icon + '"></i>';
+    } else if (iconEl) {
+        if (iconContainerEl) {
+            var faIcon = iconContainerEl.querySelector('.fa-icon');
+            if (faIcon) faIcon.style.display = 'none';
+        }
+        iconEl.src = data.icon;
+        iconEl.style.display = 'block';
+    }
+    
     if (shortDescEl) {
         shortDescEl.textContent = data.shortDesc || '';
         shortDescEl.style.display = data.shortDesc ? 'block' : 'none';
