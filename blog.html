@@ -118,14 +118,14 @@
         <div id="serviceDetailModal">
             <div class="bg-white rounded-2xl relative">
                 <button onclick="closeServiceDetail()" class="absolute top-4 right-4 text-gray-400 z-10"><i class="fas fa-times text-2xl"></i></button>
-                <div class="p-8">
+                <div class="p-8 overflow-y-auto" style="max-height: calc(100vh - 4rem);">
                     <img id="serviceIcon" src="" class="w-20 h-20 mb-6" alt="服务图标">
                     <h2 id="serviceTitle" class="text-2xl font-black mb-6"></h2>
                     <p id="serviceDesc" class="text-gray-600 mb-4 hidden"></p>
                     <ul id="serviceItems" class="list-inside list-disc text-gray-600 space-y-3"></ul>
-                    <div class="mt-8 flex gap-4">
-                        <a href="tel:3477268777" class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-xl font-bold">立即拨号</a>
-                        <button onclick="toggleQR(); closeServiceDetail();" class="bg-gray-100 hover:bg-gray-200 px-6 py-3 rounded-xl font-bold">微信咨询</button>
+                    <div class="mt-8 flex gap-4 flex-wrap">
+                        <a href="tel:3477268777" class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-xl font-bold flex-1 min-w-max text-center">立即拨号</a>
+                        <button onclick="toggleQR(); closeServiceDetail();" class="bg-gray-100 hover:bg-gray-200 px-6 py-3 rounded-xl font-bold flex-1 min-w-max">微信咨询</button>
                     </div>
                 </div>
             </div>

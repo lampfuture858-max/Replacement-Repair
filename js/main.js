@@ -173,13 +173,14 @@ function showService(serviceId) {
     }
     
     modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    // 防止背景滚动
+    document.documentElement.style.overflow = 'hidden';
 }
 
 function closeServiceDetail() {
     var modal = document.getElementById('serviceDetailModal');
     if (modal) {
         modal.classList.remove('active');
-        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
     }
 }
