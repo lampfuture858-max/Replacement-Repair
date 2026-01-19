@@ -62,35 +62,35 @@
         <div class="mb-8">
             <h3 class="text-2xl font-bold text-slate-800 mb-4">服务概览</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-                <a href="#" onclick="displayCases('s1'); return false;" class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-red-300 flex flex-col items-start cursor-pointer transition">
+                <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-red-300 flex flex-col items-start transition">
                     <img src="images/icon1.png" class="w-10 h-10 mb-3" alt="维修图标">
                     <strong class="font-bold mb-1">来水/下水管维修</strong>
                     <span class="text-xs text-gray-500">漏水、返水、不通、老管换新及密封修复。</span>
-                </a>
-                <a href="#" onclick="displayCases('s2'); return false;" class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-red-300 flex flex-col items-start cursor-pointer transition">
+                </div>
+                <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-red-300 flex flex-col items-start transition">
                     <img src="images/icon2.png" class="w-10 h-10 mb-3" alt="疏通图标">
                     <strong class="font-bold mb-1">疏通 & 挖街换管</strong>
                     <span class="text-xs text-gray-500">高压水机、电脑摄像定位，必要时挖街换管。</span>
-                </a>
-                <a href="#" onclick="displayCases('s3'); return false;" class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-red-300 flex flex-col items-start cursor-pointer transition">
+                </div>
+                <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-red-300 flex flex-col items-start transition">
                     <img src="images/icon3.png" class="w-10 h-10 mb-3" alt="水系统图标">
                     <strong class="font-bold mb-1">水系统维修</strong>
                     <span class="text-xs text-gray-500">总开关、阀门、水压排查、隐蔽漏水检测。</span>
-                </a>
-                <a href="#" onclick="displayCases('s4'); return false;" class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-red-300 flex flex-col items-start cursor-pointer transition">
+                </div>
+                <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-red-300 flex flex-col items-start transition">
                     <img src="images/icon4.png" class="w-10 h-10 mb-3 invert" alt="热水炉图标">
                     <strong class="font-bold mb-1">水泵/热水炉/暖气</strong>
                     <span class="text-xs text-gray-500">抽水泵、热水炉、暖气炉安装与维修。</span>
-                </a>
-                <a href="#" onclick="displayCases('s5'); return false;" class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-red-300 flex flex-col items-start cursor-pointer transition">
+                </div>
+                <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-red-300 flex flex-col items-start transition">
                     <img src="images/icon1.png" class="w-10 h-10 mb-3" alt="煤气图标">
                     <strong class="font-bold mb-1">煤气管道检测</strong>
                     <span class="text-xs text-gray-500">煤气泄漏排查、压力测试与合规维修。</span>
-                </a>
+                </div>
             </div>
         </div>
 
-        <!-- 动态案例展示区（在服务概览下方） -->
+        <!-- 案例展示区 -->
         <div id="casesShowcase" class="mb-12 bg-white rounded-2xl p-8 border-2 border-red-600 shadow-lg">
             <div id="casesContent"></div>
         </div>
@@ -787,9 +787,38 @@
             document.getElementById('casesContent').innerHTML = html;
         }
 
-        // 页面加载时显示第一个服务的案例
+        // 页面加载时显示所有服务的案例
         window.addEventListener('load', () => {
-            displayCases('s1');
+            let allHtml = '';
+            
+            Object.keys(casesList).forEach((serviceId) => {
+                const data = casesList[serviceId];
+                
+                allHtml += `<div class="mb-12">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-black text-slate-800 mb-2">${data.title}</h3>
+                        <p class="text-gray-600">${data.subtitle}</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">`;
+                
+                data.cases.forEach((item) => {
+                    allHtml += `<div class="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 border border-gray-200 hover:shadow-lg transition-shadow">
+                        <p class="text-xs text-red-600 font-bold uppercase mb-2">真实案例</p>
+                        <h4 class="text-lg font-bold text-slate-800 mb-3">${item.name}</h4>
+                        <p class="text-sm text-gray-600 mb-3"><strong>问题：</strong>${item.problem}</p>
+                        <p class="text-sm text-gray-600 mb-3"><strong>解决：</strong>${item.solution}</p>
+                        <div class="flex gap-2 flex-wrap mb-3">
+                            ${item.tags.map((tag, i) => `<span class="${item.tagColors[i]} text-xs px-2 py-1 rounded-full font-semibold">${tag}</span>`).join('')}
+                        </div>
+                        <p class="text-sm mb-2"><strong class="text-slate-800">反馈：</strong><span class="text-gray-600">${item.feedback}</span></p>
+                        <p class="text-xs text-gray-500">${item.location} | ${item.time}</p>
+                    </div>`;
+                });
+                
+                allHtml += `</div></div>`;
+            });
+            
+            document.getElementById('casesContent').innerHTML = allHtml;
         });
     </script>
 
