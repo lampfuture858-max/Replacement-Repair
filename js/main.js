@@ -277,3 +277,108 @@ function closeServiceDetail() {
         document.documentElement.style.overflow = '';
     }
 }
+
+// ===== 案例展示系统 =====
+const casesList = {
+    s1: {
+        title: '来水 / 下水管维修案例',
+        subtitle: '真实客户反馈 · 现场施工展示 · 对症下药、快速解决',
+        cases: [
+            { name: '曼哈顿公寓主卧卫生间返水', problem: '主卧卫生间每次冲厕所就返水，楼下住户已投诉3次。用管道疏通机试过多次都不行。', solution: '杨师傅用电脑摄像内窥镜定位到3楼与4楼之间的主下水管内有油脂堆积 + 陶片碎裂，用高压水机清理 + 换管接头，共耗时2.5小时。', tags: ['电脑摄像诊断', '高压水机', '换管接头'], tagColors: ['bg-blue-100 text-blue-700', 'bg-green-100 text-green-700', 'bg-purple-100 text-purple-700'], feedback: '⭐⭐⭐⭐⭐ "非常专业！一眼看出问题所在，效率高，价格也很公道，已向朋友推荐。"', location: '📍 曼哈顿上东城', time: '⏱ 2024年10月' },
+            { name: '法拉盛中餐馆厨房下水漏水', problem: '厨房下水管接头漏水，滴在楼下卖场天花板上，已漏了半个月。询问了3家维修公司都报价2000元以上。', solution: '杨师傅上门检查，发现下水管接头处防水胶老化 + 螺栓松动，清理接头、更换硅胶、上紧螺栓，30分钟搞定，收费$480。', tags: ['漏水查修', '防水处理', '快速维修'], tagColors: ['bg-orange-100 text-orange-700', 'bg-red-100 text-red-700', 'bg-yellow-100 text-yellow-700'], feedback: '⭐⭐⭐⭐⭐ "太实在了！别的报2000块的活儿，一上门就能诊断问题还这么便宜。立刻给员工加餐！"', location: '📍 法拉盛缅街', time: '⏱ 2024年9月' },
+            { name: '皇后区老房子来水管冻裂', problem: '冬天来水管冻裂，楼下淹水。房子已有80年历史，来水管是铁管，多处锈蚀。邻居怀疑得全换新管。', solution: '杨师傅检查后，只需要换冻裂处 + 加装防冻伴热线，成本$350。旧铁管能继续用5-10年，业主非常满意。', tags: ['冻裂修复', '防冻处理', '成本节省'], tagColors: ['bg-cyan-100 text-cyan-700', 'bg-teal-100 text-teal-700', 'bg-green-100 text-green-700'], feedback: '⭐⭐⭐⭐⭐ "省了我至少1000块钱！没有乱建议换管，专业、诚实、强烈推荐。"', location: '📍 皇后区森林小丘', time: '⏱ 2024年1月' }
+        ]
+    },
+    s2: {
+        title: '疏通 & 挖街换管案例',
+        subtitle: '高压水机 · 电脑摄像 · 一次搞定顽固堵塞',
+        cases: [
+            { name: '皇后区整栋楼主下水道堵塞', problem: '整栋4层楼下水道不通，1楼返水，楼管说已经好几年了。请了多家公司都说要挖街换管，报价$8000+。', solution: '杨师傅用电脑摄像定位，发现堵塞点在街道主管与楼管接口处，全是油脂 + 纸制品。用高压水机直接疏通，不用挖街，耗时3小时，收费$1200。', tags: ['电脑摄像定位', '高压水机', '省钱方案'], tagColors: ['bg-amber-100 text-amber-700', 'bg-orange-100 text-orange-700', 'bg-red-100 text-red-700'], feedback: '⭐⭐⭐⭐⭐ "省了6000多块！还不用破坏街道。对比其他公司的报价，真是天壤之别。"', location: '📍 皇后区牙买加', time: '⏱ 2024年8月' },
+            { name: '布鲁克林街道下水管树根穿破', problem: '整条街道下水道堵塞，最后排查发现是树根穿破了下水管，邻近3户都受影响，城市部门要求业主自费修复。', solution: '杨师傅评估后，先用高压水机清理树根，然后挖街换管。只换了最严重的30米管段，并妥善恢复路面和绿化，全部费用$3500。', tags: ['树根清理', '挖街换管', '路面恢复'], tagColors: ['bg-yellow-100 text-yellow-700', 'bg-amber-100 text-amber-700', 'bg-green-100 text-green-700'], feedback: '⭐⭐⭐⭐⭐ "从诊断到施工都很专业，还帮我们处理与邻居的协调问题。城市部门检查也通过了！"', location: '📍 布鲁克林展望高地', time: '⏱ 2024年7月' },
+            { name: '曼哈顿高层餐馆厨房油脂堵塞', problem: '繁忙餐馆厨房每周都要疏通一次，请的普通工人用钻机每次都是临时疏通，效果不好，非常影响营业。', solution: '杨师傅用高压水机深度清理，彻底清除管道内的油脂沉淀，并教导厨房人员定期保养。从那以后，这家餐馆3个月都没有堵塞过。', tags: ['高压清洗', '油脂清理', '定期保养'], tagColors: ['bg-orange-100 text-orange-700', 'bg-red-100 text-red-700', 'bg-purple-100 text-purple-700'], feedback: '⭐⭐⭐⭐⭐ "一劳永逸的方案！现在每月只需预防性维护一次，省了我们太多麻烦。"', location: '📍 曼哈顿中城', time: '⏱ 2024年6月' }
+        ]
+    },
+    s3: {
+        title: '水系统维修案例',
+        subtitle: '隐蔽漏水检测 · 水压异常排查 · 全面系统诊断',
+        cases: [
+            { name: '曼哈顿豪宅隐蔽漏水排查', problem: '业主水费突然翻倍，但看不出来哪里漏水。装修公司和其他维修工都找不到。房主非常焦虑。', solution: '杨师傅用超声波检测仪在墙体内部定位，发现是2楼浴室下的来水管接头处微漏。只需打开一小块瓷砖，更换接头，损失最小。', tags: ['超声波检测', '精准定位', '最小损伤'], tagColors: ['bg-blue-100 text-blue-700', 'bg-indigo-100 text-indigo-700', 'bg-cyan-100 text-cyan-700'], feedback: '⭐⭐⭐⭐⭐ "终于找到漏点了！杨师傅的技术真的专业，保留了我的装修。"', location: '📍 曼哈顿上东区', time: '⏱ 2024年11月' },
+            { name: '法拉盛公寓来水压力异常', problem: '整栋楼来水压力不足，高层都没有水，但低层却很强。物业找了好几个水管工都没好好诊断。', solution: '杨师傅发现是楼顶储水箱进水阀门老化，水流不足。只需换个阀门，整栋楼水压就正常了。费用$280。', tags: ['系统诊断', '阀门更换', '经济方案'], tagColors: ['bg-teal-100 text-teal-700', 'bg-blue-100 text-blue-700', 'bg-green-100 text-green-700'], feedback: '⭐⭐⭐⭐⭐ "物业推荐给住户的最好维修工。问题诊断得很快，价格也公道。"', location: '📍 法拉盛缅街', time: '⏱ 2024年5月' },
+            { name: '布朗士民宅水表故障导致水费异常', problem: '业主3个月水费达到$800，明显异常。水务公司说是使用问题。业主很冤枉，不知道找谁诊断。', solution: '杨师傅检查发现水表已经坏了，不准确计量。向水务公司反映，帮业主更换了新水表，并追回了多交的费用。', tags: ['水表诊断', '协议沟通', '费用追回'], tagColors: ['bg-cyan-100 text-cyan-700', 'bg-teal-100 text-teal-700', 'bg-blue-100 text-blue-700'], feedback: '⭐⭐⭐⭐⭐ "太感谢了！杨师傅不仅修好了问题，还帮我追回了多交的水费。真是可靠！"', location: '📍 布朗士日落公园', time: '⏱ 2024年4月' }
+        ]
+    },
+    s4: {
+        title: '水泵 / 热水炉 / 暖气系统案例',
+        subtitle: '安装 · 维修 · 更换 · 冬天不再冻',
+        cases: [
+            { name: '布朗士暖气炉突然停止工作', problem: '1月严寒，暖气炉突然不工作，房间温度急剧下降。业主急坏了，打遍了紧急热线都排队很久。', solution: '杨师傅30分钟内上门（比其他公司快得多），发现是电路故障 + 燃烧器积碳。清理积碳、更换点火器，暖气恢复正常。收费$650。', tags: ['快速上门', '紧急维修', '快速恢复'], tagColors: ['bg-red-100 text-red-700', 'bg-orange-100 text-orange-700', 'bg-yellow-100 text-yellow-700'], feedback: '⭐⭐⭐⭐⭐ "真的救了我的命！冬天没有暖气我真活不了。杨师傅的应急反应速度一流！"', location: '📍 布朗士莫里尼亚', time: '⏱ 2024年1月' },
+            { name: '曼哈顿热水炉老化需要更换', problem: '30年的热水炉不再供应热水，维修工都建议得换新炉。但新炉要$4000+，非常贵。', solution: '杨师傅查看后发现只是温度传感器和加热棒需要换，不必整炉更换。只花$520就完全恢复了热水供应。', tags: ['精准诊断', '部件更换', '省钱方案'], tagColors: ['bg-yellow-100 text-yellow-700', 'bg-orange-100 text-orange-700', 'bg-red-100 text-red-700'], feedback: '⭐⭐⭐⭐⭐ "帮我省了3000多块钱！诚实的维修工现在太少了，必须推荐。"', location: '📍 曼哈顿中城', time: '⏱ 2024年3月' },
+            { name: '皇后区地下室抽水泵安装', problem: '新购置的公寓地下室经常积水，特别是下雨天。业主想装抽水泵但不知道如何选型和安装。', solution: '杨师傅根据地下室的面积、积水量、排水管位置，选择了合适的泵型。安装、调试、教导使用，全程专业。现在下再大的雨也不怕。', tags: ['方案设计', '专业安装', '长期保障'], tagColors: ['bg-purple-100 text-purple-700', 'bg-indigo-100 text-indigo-700', 'bg-blue-100 text-blue-700'], feedback: '⭐⭐⭐⭐⭐ "不仅安装好，还定期帮我检测泵的状况。这样的售后服务太难得了！"', location: '📍 皇后区牙买加', time: '⏱ 2024年2月' }
+        ]
+    },
+    s5: {
+        title: '煤气管道检测 & 维修案例',
+        subtitle: '安全第一 · 专业检测 · 合规维修',
+        cases: [
+            { name: '曼哈顿烤箱煤气泄漏紧急排查', problem: '业主闻到厨房有轻微的煤气味，但检测器没有显示。不确定是否真的泄漏，也不知道找谁。', solution: '杨师傅用专业气体检测仪器进行全面排查，定位到烤箱进气接头处有微小泄漏。更换了接头和胶管，进行压力测试确认没有问题。', tags: ['紧急排查', '专业检测', '安全保障'], tagColors: ['bg-red-100 text-red-700', 'bg-rose-100 text-rose-700', 'bg-orange-100 text-orange-700'], feedback: '⭐⭐⭐⭐⭐ "太专业了！不仅修好泄漏，还详细解释了煤气安全知识。心理踏实多了。"', location: '📍 曼哈顿上西城', time: '⏱ 2024年10月' },
+            { name: '法拉盛餐馆定期煤气安全检测', problem: '餐馆每月被要求进行煤气安全检测，但很难找到可靠的检测服务。之前的检测人员标准不统一。', solution: '杨师傅与餐馆建立了定期检测合作（每季度一次），每次都用标准化检测、出具检测报告、记录存档。现在餐馆的煤气安全完全合规，审计无忧。', tags: ['定期检测', '标准化报告', '合规保障'], tagColors: ['bg-orange-100 text-orange-700', 'bg-red-100 text-red-700', 'bg-yellow-100 text-yellow-700'], feedback: '⭐⭐⭐⭐⭐ "找到了稳定的合作方，再也不用为煤气安全检测发愁了。推荐所有餐馆都这样做。"', location: '📍 法拉盛缅街', time: '⏱ 2024年9月' },
+            { name: '皇后区整栋楼煤气管道更新', problem: '楼管发现旧楼的煤气管道已有40年历史，多处锈蚀。城市部门要求更新以确保安全。', solution: '杨师傅制定了分阶段更新方案，最小化对住户的影响。更换了全部旧管道、安装新的安全装置、通过城市部门检验。整个项目专业、高效、安全。', tags: ['系统更新', '分阶段施工', '部门认可'], tagColors: ['bg-yellow-100 text-yellow-700', 'bg-orange-100 text-orange-700', 'bg-red-100 text-red-700'], feedback: '⭐⭐⭐⭐⭐ "大工程做得井井有条，住户没有怨言。城市部门一次通过检验，杨师傅的专业让我们非常满意。"', location: '📍 皇后区牙买加', time: '⏱ 2024年8月' }
+        ]
+    }
+};
+
+function displayCases(serviceId) {
+    const data = casesList[serviceId];
+    if (!data) return '';
+    
+    let html = '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">';
+    
+    data.cases.forEach((item) => {
+        html += '<div class="bg-gradient-to-br from-gray-50 to-white rounded-xl p-4 border border-gray-200 hover:shadow-lg transition-shadow">';
+        html += '<p class="text-xs text-red-600 font-bold uppercase mb-1">真实案例</p>';
+        html += '<h4 class="text-sm font-bold text-slate-800 mb-2">' + item.name + '</h4>';
+        html += '<p class="text-xs text-gray-600 mb-2"><strong>问题：</strong>' + item.problem + '</p>';
+        html += '<p class="text-xs text-gray-600 mb-2"><strong>解决：</strong>' + item.solution + '</p>';
+        html += '<div class="flex gap-1 flex-wrap mb-2">';
+        item.tags.forEach((tag, i) => {
+            html += '<span class="' + item.tagColors[i] + ' text-xs px-1.5 py-0.5 rounded-full font-semibold">' + tag + '</span>';
+        });
+        html += '</div>';
+        html += '<p class="text-xs mb-1"><strong class="text-slate-800">反馈：</strong><span class="text-gray-600">' + item.feedback + '</span></p>';
+        html += '<p class="text-xs text-gray-500">' + item.location + ' | ' + item.time + '</p>';
+        html += '</div>';
+    });
+    
+    html += '</div>';
+    return html;
+}
+
+function toggleCases(serviceId) {
+    const container = document.getElementById('cases-' + serviceId + '-container');
+    const content = document.getElementById('cases-' + serviceId + '-content');
+    const toggle = document.getElementById('toggle-' + serviceId);
+    
+    if (!container || !content) return;
+    
+    if (container.classList.contains('hidden')) {
+        // 显示
+        container.classList.remove('hidden');
+        content.innerHTML = displayCases(serviceId);
+        if (toggle) toggle.style.transform = 'rotate(180deg)';
+    } else {
+        // 隐藏
+        container.classList.add('hidden');
+        if (toggle) toggle.style.transform = 'rotate(0deg)';
+    }
+}
+
+// 页面加载时初始化
+document.addEventListener('DOMContentLoaded', function(){
+    // 初始化所有案例内容（但隐藏）
+    ['s1', 's2', 's3', 's4', 's5'].forEach(function(serviceId) {
+        const content = document.getElementById('cases-' + serviceId + '-content');
+        if (content) {
+            content.innerHTML = displayCases(serviceId);
+        }
+    });
+});
