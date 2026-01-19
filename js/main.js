@@ -279,7 +279,7 @@ function closeServiceDetail() {
 }
 
 // ===== 案例展示系统 =====
-const casesList = {
+window.casesList = {
     s1: {
         title: '来水 / 下水管维修案例',
         subtitle: '真实客户反馈 · 现场施工展示 · 对症下药、快速解决',
@@ -327,8 +327,8 @@ const casesList = {
     }
 };
 
-function displayCases(serviceId) {
-    const data = casesList[serviceId];
+function displayServiceCases(serviceId) {
+    const data = window.casesList[serviceId];
     if (!data) return '';
     
     let html = '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">';
@@ -355,32 +355,26 @@ function displayCases(serviceId) {
 
 function toggleCases(serviceId) {
     const container = document.getElementById('cases-' + serviceId + '-container');
-    const content = document.getElementById('cases-' + serviceId + '-content');
     const toggle = document.getElementById('toggle-' + serviceId);
     
-    if (!container || !content) return;
+    if (!container) {
+        console.log('找不到容器: cases-' + serviceId + '-container');
+        return;
+    }
     
     if (container.classList.contains('hidden')) {
         // 显示
         container.classList.remove('hidden');
-        content.innerHTML = displayCases(serviceId);
         if (toggle) toggle.style.transform = 'rotate(180deg)';
+        console.log('展开: ' + serviceId);
     } else {
         // 隐藏
         container.classList.add('hidden');
         if (toggle) toggle.style.transform = 'rotate(0deg)';
+        console.log('折叠: ' + serviceId);
     }
 }
 
-// 页面加载时初始化
-document.addEventListener('DOMContentLoaded', function(){
-    console.log('案例系统已加载'); // 调试用
-    // 初始化所有案例内容（但隐藏）
-    ['s1', 's2', 's3', 's4', 's5'].forEach(function(serviceId) {
-        const content = document.getElementById('cases-' + serviceId + '-content');
-        if (content) {
-            content.innerHTML = displayCases(serviceId);
-            console.log('初始化案例: ' + serviceId); // 调试用
-        }
-    });
-});
+// 将函数挂载到全局对象
+window.displayServiceCases = displayServiceCases;
+window.toggleCases = toggleCases;
