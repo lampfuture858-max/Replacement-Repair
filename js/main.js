@@ -374,11 +374,13 @@ function toggleCases(serviceId) {
 
 // 页面加载时初始化
 document.addEventListener('DOMContentLoaded', function(){
+    console.log('案例系统已加载'); // 调试用
     // 初始化所有案例内容（但隐藏）
     ['s1', 's2', 's3', 's4', 's5'].forEach(function(serviceId) {
         const content = document.getElementById('cases-' + serviceId + '-content');
         if (content) {
             content.innerHTML = displayCases(serviceId);
+            console.log('初始化案例: ' + serviceId); // 调试用
         }
     });
 });
