@@ -91,59 +91,84 @@
         </div>
 
         <!-- 案例展示区 -->
-        <div id="casesShowcase" class="mb-12 bg-white rounded-2xl p-8 border-2 border-red-600 shadow-lg">
+        <div id="casesShowcase" class="mb-12 bg-white rounded-2xl p-8 border-2 border-red-600 shadow-lg hidden">
             <div id="casesContent"></div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- 服务1：来水/下水管维修 -->
             <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <h2 id="s1" class="text-xl font-black mb-4">一、住宅 / 餐馆 / 商业来水、下水管维修</h2>
+                <h2 id="s1" class="text-xl font-black mb-4 cursor-pointer hover:text-red-600 transition" onclick="toggleCases('s1')">一、住宅 / 餐馆 / 商业来水、下水管维修</h2>
                 <ul class="list-inside list-disc text-gray-600 space-y-2">
                     <li>来水管、下水管漏水快速查修与封堵</li>
                     <li>下水道堵塞、返水、不通诊断与疏通</li>
                     <li>老旧管道维修与整段更换</li>
                     <li>厨房与卫生间排水异常处理与密封修复</li>
                 </ul>
+                <!-- 服务1的案例展示区 -->
+                <div id="cases-s1-container" class="mt-6 pt-6 border-t border-gray-200 hidden">
+                    <div id="cases-s1-content"></div>
+                </div>
             </section>
 
+            <!-- 服务2：疏通 & 挖街换管 -->
             <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <h2 id="s2" class="text-xl font-black mb-4">二、管道疏通 & 挖街换管</h2>
+                <h2 id="s2" class="text-xl font-black mb-4 cursor-pointer hover:text-red-600 transition" onclick="toggleCases('s2')">二、管道疏通 & 挖街换管</h2>
                 <ul class="list-inside list-disc text-gray-600 space-y-2">
                     <li>室内外下水道专业疏通（手工 + 高压水机）</li>
                     <li>主下水管与街道主管堵塞定位与处理</li>
                     <li>挖街换管、老旧街管更新与恢复通行</li>
                     <li>油脂、树根与顽固堵塞清理（提供免费电脑摄像检测）</li>
                 </ul>
+                <!-- 服务2的案例展示区 -->
+                <div id="cases-s2-container" class="mt-6 pt-6 border-t border-gray-200 hidden">
+                    <div id="cases-s2-content"></div>
+                </div>
             </section>
 
+            <!-- 服务3：水系统维修 -->
             <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <h2 id="s3" class="text-xl font-black mb-4">三、水系统维修与更换</h2>
+                <h2 id="s3" class="text-xl font-black mb-4 cursor-pointer hover:text-red-600 transition" onclick="toggleCases('s3')">三、水系统维修与更换</h2>
                 <ul class="list-inside list-disc text-gray-600 space-y-2">
                     <li>来水总开关维修与更换</li>
                     <li>水压异常与异常水费排查</li>
                     <li>隐蔽漏水检测（含超声波与内窥镜）</li>
                     <li>各类水管配件及阀门维修更换</li>
                 </ul>
+                <!-- 服务3的案例展示区 -->
+                <div id="cases-s3-container" class="mt-6 pt-6 border-t border-gray-200 hidden">
+                    <div id="cases-s3-content"></div>
+                </div>
             </section>
 
+            <!-- 服务4：水泵/热水炉/暖气 -->
             <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <h2 id="s4" class="text-xl font-black mb-4">四、水泵 / 热水炉 / 暖气系统</h2>
+                <h2 id="s4" class="text-xl font-black mb-4 cursor-pointer hover:text-red-600 transition" onclick="toggleCases('s4')">四、水泵 / 热水炉 / 暖气系统</h2>
                 <ul class="list-inside list-disc text-gray-600 space-y-2">
                     <li>大型抽水泵安装、调试与维修</li>
                     <li>热水炉（Hot Water Heater）安装与更换</li>
                     <li>暖气炉（Boiler / Furnace）检修与维护</li>
                     <li>暖气不热、异响、泄漏等故障诊断与修复</li>
                 </ul>
+                <!-- 服务4的案例展示区 -->
+                <div id="cases-s4-container" class="mt-6 pt-6 border-t border-gray-200 hidden">
+                    <div id="cases-s4-content"></div>
+                </div>
             </section>
 
+            <!-- 服务5：煤气管道检测 -->
             <section id="s5" class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 md:col-span-2">
-                <h2 class="text-xl font-black mb-4">五、煤气管道检测与维修（安全第一）</h2>
+                <h2 class="text-xl font-black mb-4 cursor-pointer hover:text-red-600 transition" onclick="toggleCases('s5')">五、煤气管道检测与维修（安全第一）</h2>
                 <p class="text-gray-600 mb-3">提供专业煤气管道安全检测、泄漏排查与合规维修，严格按安全规范施工，确保居住与商用场所安全。</p>
                 <ul class="list-inside list-disc text-gray-600 space-y-2">
                     <li>煤气管道完整性检查与压力测试</li>
                     <li>煤气泄漏快速排查与临时处置</li>
                     <li>煤气管维修、更换与合规加固</li>
                 </ul>
+                <!-- 服务5的案例展示区 -->
+                <div id="cases-s5-container" class="mt-6 pt-6 border-t border-gray-200 hidden">
+                    <div id="cases-s5-content"></div>
+                </div>
             </section>
         </div>
 
@@ -763,62 +788,47 @@
             const data = casesList[serviceId];
             if (!data) return;
             
-            let html = `<div class="text-center mb-8">
-                <h3 class="text-2xl font-black text-slate-800 mb-2">${data.title}</h3>
-                <p class="text-gray-600">${data.subtitle}</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">`;
+            let html = `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">`;
             
             data.cases.forEach((item) => {
-                html += `<div class="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 border border-gray-200 hover:shadow-lg transition-shadow">
-                    <p class="text-xs text-red-600 font-bold uppercase mb-2">真实案例</p>
-                    <h4 class="text-lg font-bold text-slate-800 mb-3">${item.name}</h4>
-                    <p class="text-sm text-gray-600 mb-3"><strong>问题：</strong>${item.problem}</p>
-                    <p class="text-sm text-gray-600 mb-3"><strong>解决：</strong>${item.solution}</p>
-                    <div class="flex gap-2 flex-wrap mb-3">
-                        ${item.tags.map((tag, i) => `<span class="${item.tagColors[i]} text-xs px-2 py-1 rounded-full font-semibold">${tag}</span>`).join('')}
+                html += `<div class="bg-gradient-to-br from-gray-50 to-white rounded-xl p-4 border border-gray-200 hover:shadow-lg transition-shadow">
+                    <p class="text-xs text-red-600 font-bold uppercase mb-1">真实案例</p>
+                    <h4 class="text-sm font-bold text-slate-800 mb-2">${item.name}</h4>
+                    <p class="text-xs text-gray-600 mb-2"><strong>问题：</strong>${item.problem}</p>
+                    <p class="text-xs text-gray-600 mb-2"><strong>解决：</strong>${item.solution}</p>
+                    <div class="flex gap-1 flex-wrap mb-2">
+                        ${item.tags.map((tag, i) => `<span class="${item.tagColors[i]} text-xs px-1.5 py-0.5 rounded-full font-semibold">${tag}</span>`).join('')}
                     </div>
-                    <p class="text-sm mb-2"><strong class="text-slate-800">反馈：</strong><span class="text-gray-600">${item.feedback}</span></p>
+                    <p class="text-xs mb-1"><strong class="text-slate-800">反馈：</strong><span class="text-gray-600">${item.feedback}</span></p>
                     <p class="text-xs text-gray-500">${item.location} | ${item.time}</p>
                 </div>`;
             });
             
             html += `</div>`;
-            document.getElementById('casesContent').innerHTML = html;
+            return html;
+        }
+
+        function toggleCases(serviceId) {
+            const container = document.getElementById(`cases-${serviceId}-container`);
+            const content = document.getElementById(`cases-${serviceId}-content`);
+            
+            if (container.classList.contains('hidden')) {
+                // 显示
+                container.classList.remove('hidden');
+                content.innerHTML = displayCases(serviceId);
+            } else {
+                // 隐藏
+                container.classList.add('hidden');
+            }
         }
 
         // 页面加载时显示所有服务的案例
         window.addEventListener('load', () => {
-            let allHtml = '';
-            
-            Object.keys(casesList).forEach((serviceId) => {
-                const data = casesList[serviceId];
-                
-                allHtml += `<div class="mb-12">
-                    <div class="text-center mb-8">
-                        <h3 class="text-2xl font-black text-slate-800 mb-2">${data.title}</h3>
-                        <p class="text-gray-600">${data.subtitle}</p>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">`;
-                
-                data.cases.forEach((item) => {
-                    allHtml += `<div class="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 border border-gray-200 hover:shadow-lg transition-shadow">
-                        <p class="text-xs text-red-600 font-bold uppercase mb-2">真实案例</p>
-                        <h4 class="text-lg font-bold text-slate-800 mb-3">${item.name}</h4>
-                        <p class="text-sm text-gray-600 mb-3"><strong>问题：</strong>${item.problem}</p>
-                        <p class="text-sm text-gray-600 mb-3"><strong>解决：</strong>${item.solution}</p>
-                        <div class="flex gap-2 flex-wrap mb-3">
-                            ${item.tags.map((tag, i) => `<span class="${item.tagColors[i]} text-xs px-2 py-1 rounded-full font-semibold">${tag}</span>`).join('')}
-                        </div>
-                        <p class="text-sm mb-2"><strong class="text-slate-800">反馈：</strong><span class="text-gray-600">${item.feedback}</span></p>
-                        <p class="text-xs text-gray-500">${item.location} | ${item.time}</p>
-                    </div>`;
-                });
-                
-                allHtml += `</div></div>`;
+            // 初始化所有案例内容（但隐藏）
+            ['s1', 's2', 's3', 's4', 's5'].forEach(serviceId => {
+                const content = document.getElementById(`cases-${serviceId}-content`);
+                content.innerHTML = displayCases(serviceId);
             });
-            
-            document.getElementById('casesContent').innerHTML = allHtml;
         });
     </script>
 
