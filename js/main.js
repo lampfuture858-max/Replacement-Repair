@@ -7,6 +7,10 @@ function toggleQR() {
 
 
 document.addEventListener('DOMContentLoaded', function(){
+    // 确保全局函数可用
+    window.scrollToSection = scrollToSection;
+    window.performScroll = performScroll;
+    
     var form = document.getElementById('contactForm');
     if (form) {
         form.addEventListener('submit', function(e){
@@ -449,6 +453,48 @@ function toggleCases(serviceId) {
     }
 }
 
+// 滚动到指定服务部分
+function scrollToSection(sectionId) {
+    console.log('scrollToSection called with:', sectionId);
+    // 如果在移动端，先关闭菜单
+    var mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenu && mobileMenu.classList.contains('active')) {
+        mobileMenu.classList.remove('active');
+        // 延迟滚动以允许菜单动画完成
+        setTimeout(function() {
+            performScroll(sectionId);
+        }, 100);
+    } else {
+        performScroll(sectionId);
+    }
+}
+
+function performScroll(sectionId) {
+    console.log('performScroll called with:', sectionId);
+    // 根据 sectionId 找到对应的元素
+    var element = document.getElementById(sectionId);
+    console.log('Found element:', element);
+    
+    if (element) {
+        // 计算滚动位置，考虑粘性导航栏高度
+        var navHeight = 96; // 粘性导航栏高度
+        var elementTop = element.getBoundingClientRect().top + window.scrollY;
+        var scrollPosition = elementTop - navHeight;
+        
+        // 平滑滚动到计算后的位置
+        window.scrollTo({
+            top: scrollPosition,
+            behavior: 'smooth'
+        });
+        console.log('Scrolling to position:', scrollPosition);
+    } else {
+        console.log('Element not found with id:', sectionId);
+    }
+}
+
 // 将函数挂载到全局对象
 window.displayServiceCases = displayServiceCases;
 window.toggleCases = toggleCases;
+window.scrollToSection = scrollToSection;
+window.performScroll = performScroll;
+window.scrollToSection = scrollToSection;
