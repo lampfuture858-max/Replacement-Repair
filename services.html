@@ -817,36 +817,119 @@
             <p class="text-gray-600 mt-2 max-w-2xl mx-auto">我们使用行业领先设备提高诊断准确性与修复效率，减少对建筑和路面的破坏。</p>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            <div class="bg-white rounded-xl p-4 text-center shadow-sm border border-gray-100">
-                <img src="images/icon1.png" class="w-12 h-12 mx-auto mb-2" alt="内窥镜">
-                <div class="font-bold">电脑摄像内窥镜</div>
-                <div class="text-xs text-gray-500">精准定位堵塞与破损</div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- 设备1：电脑摄像内窥镜 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition-shadow cursor-pointer group" onclick="showEquipmentDetail('camera')">
+                <div class="relative h-48 bg-gradient-to-br from-blue-50 to-cyan-50 overflow-hidden">
+                    <img src="images/equipment/窥镜1 (1).jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" alt="电脑摄像内窥镜">
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="bg-white text-red-600 px-6 py-3 rounded-full font-bold text-sm">👁️ 点击查看详情</span>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="font-bold text-lg mb-2">电脑摄像内窥镜</div>
+                    <div class="text-xs text-gray-500 mb-3">精准定位堵塞与破损，可视化检测管道内部</div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-red-600 font-bold">💡 高清探测</span>
+                        <span class="text-xs text-blue-600 font-bold">📸 查看详情 →</span>
+                    </div>
+                </div>
             </div>
-            <div class="bg-white rounded-xl p-4 text-center shadow-sm border border-gray-100">
-                <img src="images/icon2.png" class="w-12 h-12 mx-auto mb-2" alt="高压水机">
-                <div class="font-bold">高压水清洗机</div>
-                <div class="text-xs text-gray-500">清理油脂和树根</div>
+
+            <!-- 设备2：高压水清洗机 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition-shadow cursor-pointer group" onclick="showEquipmentDetail('pressure')">
+                <div class="relative h-48 bg-gradient-to-br from-green-50 to-teal-50 overflow-hidden">
+                    <video class="w-full h-full object-cover" muted loop onmouseover="this.play()" onmouseout="this.pause()">
+                        <source src="videos/下水管道.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="bg-white text-red-600 px-6 py-3 rounded-full font-bold text-sm">💧 点击查看详情</span>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="font-bold text-lg mb-2">高压水清洗机</div>
+                    <div class="text-xs text-gray-500 mb-3">强力清除油脂、树根等顽固堵塞物</div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-red-600 font-bold">💪 强力疏通</span>
+                        <span class="text-xs text-blue-600 font-bold">📸 查看详情 →</span>
+                    </div>
+                </div>
             </div>
-            <div class="bg-white rounded-xl p-4 text-center shadow-sm border border-gray-100">
-                <img src="images/icon3.png" class="w-12 h-12 mx-auto mb-2" alt="疏通机">
-                <div class="font-bold">电动蛇管 / 疏通机</div>
-                <div class="text-xs text-gray-500">机械疏通顽固堵塞</div>
+
+            <!-- 设备3：电动蛇管/疏通机 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition-shadow cursor-pointer group" onclick="showEquipmentDetail('snake')">
+                <div class="relative h-48 bg-gradient-to-br from-purple-50 to-pink-50 overflow-hidden">
+                    <img src="images/equipment/窥镜1 (2).jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" alt="电动疏通机">
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="bg-white text-red-600 px-6 py-3 rounded-full font-bold text-sm">🔧 点击查看详情</span>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="font-bold text-lg mb-2">电动蛇管 / 疏通机</div>
+                    <div class="text-xs text-gray-500 mb-3">机械疏通顽固堵塞，旋转清除管道内杂物</div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-red-600 font-bold">⚙️ 机械疏通</span>
+                        <span class="text-xs text-blue-600 font-bold">📸 查看详情 →</span>
+                    </div>
+                </div>
             </div>
-            <div class="bg-white rounded-xl p-4 text-center shadow-sm border border-gray-100">
-                <img src="images/icon4.png" class="w-12 h-12 mx-auto mb-2 invert" alt="非开挖">
-                <div class="font-bold">非开挖更换设备</div>
-                <div class="text-xs text-gray-500">顶进/爆管等减少路面破坏</div>
+
+            <!-- 设备4：非开挖更换设备 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition-shadow cursor-pointer group" onclick="showEquipmentDetail('trenchless')">
+                <div class="relative h-48 bg-gradient-to-br from-orange-50 to-red-50 overflow-hidden">
+                    <img src="images/equipment/窥镜1 (3).jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" alt="非开挖设备">
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="bg-white text-red-600 px-6 py-3 rounded-full font-bold text-sm">🛠️ 点击查看详情</span>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="font-bold text-lg mb-2">非开挖更换设备</div>
+                    <div class="text-xs text-gray-500 mb-3">顶进/爆管等技术，减少路面破坏，节省成本</div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-red-600 font-bold">🚧 减少破坏</span>
+                        <span class="text-xs text-blue-600 font-bold">📸 查看详情 →</span>
+                    </div>
+                </div>
             </div>
-            <div class="bg-white rounded-xl p-4 text-center shadow-sm border border-gray-100">
-                <img src="images/icon1.png" class="w-12 h-12 mx-auto mb-2" alt="探测仪">
-                <div class="font-bold">管线探测仪</div>
-                <div class="text-xs text-gray-500">定位埋地管线走向与故障点</div>
+
+            <!-- 设备5：管线探测仪 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition-shadow cursor-pointer group" onclick="showEquipmentDetail('detector')">
+                <div class="relative h-48 bg-gradient-to-br from-yellow-50 to-amber-50 overflow-hidden">
+                    <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-yellow-400 to-amber-600">
+                        <i class="fas fa-radar text-8xl text-white opacity-30"></i>
+                    </div>
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="bg-white text-red-600 px-6 py-3 rounded-full font-bold text-sm">📡 点击查看详情</span>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="font-bold text-lg mb-2">管线探测仪</div>
+                    <div class="text-xs text-gray-500 mb-3">精准定位埋地管线走向与故障点位置</div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-red-600 font-bold">📍 精准定位</span>
+                        <span class="text-xs text-blue-600 font-bold">📸 查看详情 →</span>
+                    </div>
+                </div>
             </div>
-            <div class="bg-white rounded-xl p-4 text-center shadow-sm border border-gray-100">
-                <img src="images/icon2.png" class="w-12 h-12 mx-auto mb-2" alt="检测仪">
-                <div class="font-bold">超声波 / 气体检测仪</div>
-                <div class="text-xs text-gray-500">隐蔽漏水与煤气泄漏排查</div>
+
+            <!-- 设备6：超声波/气体检测仪 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition-shadow cursor-pointer group" onclick="showEquipmentDetail('ultrasonic')">
+                <div class="relative h-48 bg-gradient-to-br from-indigo-50 to-blue-50 overflow-hidden">
+                    <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-indigo-400 to-blue-600">
+                        <i class="fas fa-wave-square text-8xl text-white opacity-30"></i>
+                    </div>
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="bg-white text-red-600 px-6 py-3 rounded-full font-bold text-sm">🔍 点击查看详情</span>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="font-bold text-lg mb-2">超声波 / 气体检测仪</div>
+                    <div class="text-xs text-gray-500 mb-3">隐蔽漏水与煤气泄漏排查，保障安全</div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-red-600 font-bold">🛡️ 安全检测</span>
+                        <span class="text-xs text-blue-600 font-bold">📸 查看详情 →</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -858,6 +941,54 @@
             <img src="images/Wechat1.png" class="w-56 h-56 md:w-48 md:h-48 mx-auto mb-4 object-contain">
             <div class="mt-2">
                 <button onclick="copyWeChat()" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md font-bold">复制微信号 yw13829751079</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Equipment Detail Modal -->
+    <div id="equipmentModal" class="fixed inset-0 bg-black/80 z-[100] hidden items-center justify-center p-4" onclick="closeEquipmentModal(event)">
+        <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative" onclick="event.stopPropagation()">
+            <button onclick="closeEquipmentModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 z-10 bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            
+            <div class="p-6 md:p-8">
+                <!-- 设备媒体展示 -->
+                <div id="equipmentMedia" class="mb-6 rounded-xl overflow-hidden"></div>
+                
+                <!-- 设备标题和描述 -->
+                <div class="mb-6">
+                    <h2 id="equipmentTitle" class="text-2xl md:text-3xl font-black text-slate-800 mb-3"></h2>
+                    <p id="equipmentDesc" class="text-gray-600 leading-relaxed"></p>
+                </div>
+                
+                <!-- 主要功能 -->
+                <div class="mb-6">
+                    <h3 class="font-bold text-lg text-slate-800 mb-3">🔧 主要功能</h3>
+                    <ul id="equipmentFeatures" class="list-disc list-inside text-gray-600 space-y-2"></ul>
+                </div>
+                
+                <!-- 技术优势 -->
+                <div class="mb-6">
+                    <h3 class="font-bold text-lg text-slate-800 mb-3">⭐ 技术优势</h3>
+                    <div id="equipmentAdvantages" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
+                </div>
+                
+                <!-- 应用场景 -->
+                <div class="mb-6 pb-6 border-b">
+                    <h3 class="font-bold text-lg text-slate-800 mb-3">💡 应用场景</h3>
+                    <div id="equipmentScenarios" class="flex flex-wrap gap-2"></div>
+                </div>
+                
+                <!-- 行动按钮 -->
+                <div class="flex gap-3 flex-wrap">
+                    <a href="tel:3477268777" class="flex-1 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-xl font-bold text-center transition">
+                        📞 立即拨打 347-726-8777
+                    </a>
+                    <button onclick="toggleQR(); closeEquipmentModal();" class="flex-1 bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 rounded-xl font-bold transition">
+                        💬 微信咨询
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -976,6 +1107,254 @@
     <script>
         // 不做任何操作 - 案例已直接嵌入HTML中，自动显示
         function showCases(serviceId) {}
+
+        // 设备详细信息数据
+        const equipmentData = {
+            camera: {
+                title: '电脑摄像内窥镜',
+                description: '采用高清摄像头和柔性光纤技术，能够深入管道内部进行实时可视化检测。配备LED照明系统，即使在完全黑暗的管道环境中也能清晰成像，帮助技师快速准确定位问题所在。',
+                media: {
+                    type: 'images',
+                    sources: [
+                        'images/equipment/窥镜1 (1).jpg',
+                        'images/equipment/窥镜1 (2).jpg',
+                        'images/equipment/窥镜1 (3).jpg'
+                    ]
+                },
+                features: [
+                    '高清摄像头，分辨率可达1080P，清晰显示管道内部状况',
+                    '可伸缩探头长度达30米以上，适应各种管道深度',
+                    '360度旋转功能，无死角检测管道',
+                    '实时录像和拍照功能，保存检测证据',
+                    '防水防腐蚀设计，适用于各类管道环境'
+                ],
+                advantages: [
+                    { icon: '🎯', text: '精准定位堵塞、破损、裂缝位置' },
+                    { icon: '💰', text: '避免盲目开挖，节省50%以上成本' },
+                    { icon: '📊', text: '提供可视化检测报告和视频记录' },
+                    { icon: '⚡', text: '快速诊断，通常15-30分钟完成检测' }
+                ],
+                scenarios: [
+                    '管道堵塞原因排查', '漏水点精准定位', '管道老化程度评估',
+                    '异物位置确认', '施工前管道状况检查', '维修后质量验收'
+                ]
+            },
+            pressure: {
+                title: '高压水清洗机',
+                description: '专业级高压水清洗设备，通过3000-4000 PSI的高压水流，配合特制喷头，能够强力清除管道内的油脂、树根、水垢等各类顽固堵塞物。比传统疏通方法更彻底、更环保。',
+                media: {
+                    type: 'video',
+                    source: 'videos/下水管道.mp4',
+                    poster: 'images/first.png'
+                },
+                features: [
+                    '3000-4000 PSI超高压水流，清洁力强劲',
+                    '多种专业喷头可更换，适应不同管道和堵塞类型',
+                    '环保无化学污染，仅用清水即可清洁',
+                    '可调节水压和流量，不损伤管道',
+                    '配备热水加热系统，强化油脂清除效果'
+                ],
+                advantages: [
+                    { icon: '💪', text: '清洁效果比传统方法提升300%' },
+                    { icon: '🌱', text: '彻底清除树根，防止再次生长' },
+                    { icon: '♻️', text: '环保无污染，不使用化学药剂' },
+                    { icon: '🔄', text: '恢复管道原有流量，延长使用寿命' }
+                ],
+                scenarios: [
+                    '餐馆厨房油脂堵塞', '树根穿破管道', '主下水道深度清洁',
+                    '老旧管道翻新前清理', '水垢矿物质沉积清除', '定期管道保养维护'
+                ]
+            },
+            snake: {
+                title: '电动蛇管/疏通机',
+                description: '专业电动管道疏通设备，配备不同规格的钢丝蛇管和刀头，通过高速旋转的机械力量切割和清除堵塞物。适合处理头发、纸巾、食物残渣等常见堵塞，是管道维修的必备工具。',
+                media: {
+                    type: 'image',
+                    source: 'images/equipment/窥镜1 (2).jpg'
+                },
+                features: [
+                    '多规格蛇管（1/4"至1"），适配不同管径',
+                    '可更换刀头设计，针对不同堵塞类型',
+                    '变速控制，根据堵塞程度调整转速',
+                    '自动进退功能，操作更安全便捷',
+                    '防缠绕设计，保护管道内壁不受损'
+                ],
+                advantages: [
+                    { icon: '⚙️', text: '机械力量强大，处理顽固堵塞' },
+                    { icon: '🎛️', text: '精确控制，避免管道二次损伤' },
+                    { icon: '⏱️', text: '快速疏通，一般堵塞30分钟解决' },
+                    { icon: '🛡️', text: '安全可靠，配备过载保护装置' }
+                ],
+                scenarios: [
+                    '马桶堵塞疏通', '洗手盆下水慢', '浴缸排水不畅',
+                    '厨房水槽堵塞', '地漏反水处理', '管道异物清除'
+                ]
+            },
+            trenchless: {
+                title: '非开挖更换设备',
+                description: '现代化非开挖管道修复技术，包括顶管、爆管、内衬修复等多种方法。无需大面积开挖路面或破坏景观，就能完成管道更换或修复，大幅降低施工成本和对环境的影响。',
+                media: {
+                    type: 'image',
+                    source: 'images/equipment/窥镜1 (3).jpg'
+                },
+                features: [
+                    '顶管技术：通过液压顶进新管道，替换旧管',
+                    '爆管技术：由内部破碎旧管，同时铺设新管',
+                    'CIPP内衬：在旧管内部形成新的防腐管道',
+                    'GPS定位：精确控制施工路径和深度',
+                    '最小开挖：仅需入口和出口两个工作井'
+                ],
+                advantages: [
+                    { icon: '🚧', text: '减少90%的路面破坏和恢复成本' },
+                    { icon: '⏰', text: '施工时间缩短50%以上' },
+                    { icon: '🌳', text: '保护树木、草坪等景观不受破坏' },
+                    { icon: '🚗', text: '最小化对交通和生活的影响' }
+                ],
+                scenarios: [
+                    '街道主管更换', '穿越道路管道修复', '景观区域管道维修',
+                    '地下室管道更新', '商业区不停业施工', '历史建筑区管道改造'
+                ]
+            },
+            detector: {
+                title: '管线探测仪',
+                description: '采用电磁感应和超声波技术的专业管线定位设备，能够在不开挖的情况下，精确探测地下管道的走向、深度和位置。配备GPS定位系统，可生成详细的管线分布图。',
+                media: {
+                    type: 'icon',
+                    icon: 'fa-radar',
+                    gradient: 'from-yellow-400 to-amber-600'
+                },
+                features: [
+                    '电磁感应技术，探测金属管道走向',
+                    '声波反射技术，定位非金属管道',
+                    '深度测量功能，精确到厘米级',
+                    'GPS定位集成，自动生成管线地图',
+                    '多频率选择，适应不同管道材质'
+                ],
+                advantages: [
+                    { icon: '📍', text: '定位精度达±5cm，避免误挖' },
+                    { icon: '🗺️', text: '生成管线分布图，便于规划施工' },
+                    { icon: '💸', text: '避免挖断其他管线的高额赔偿' },
+                    { icon: '🔒', text: '保障施工安全，防止意外事故' }
+                ],
+                scenarios: [
+                    '施工前管线排查', '漏水点精确定位', '管道走向确认',
+                    '避免挖断煤气/电线', '老旧管线普查', '物业管线资料建档'
+                ]
+            },
+            ultrasonic: {
+                title: '超声波/气体检测仪',
+                description: '集成了超声波漏水检测和气体泄漏检测功能的专业安全设备。能够探测隐蔽的漏水点和煤气泄漏，即使是微量泄漏也能准确识别，保障家居和商业场所的安全。',
+                media: {
+                    type: 'icon',
+                    icon: 'fa-wave-square',
+                    gradient: 'from-indigo-400 to-blue-600'
+                },
+                features: [
+                    '超声波检测：识别水流声音，定位隐蔽漏水',
+                    '气体传感器：检测天然气、丙烷等可燃气体',
+                    '浓度显示：实时显示气体浓度值（PPM）',
+                    '声光报警：超标时自动触发警报',
+                    '数据记录：保存检测数据供后续分析'
+                ],
+                advantages: [
+                    { icon: '🛡️', text: '保障生命财产安全，预防事故' },
+                    { icon: '🔍', text: '发现肉眼和鼻子难以察觉的泄漏' },
+                    { icon: '📝', text: '提供检测报告，符合安全规范' },
+                    { icon: '⚡', text: '快速扫描，15分钟完成全屋检测' }
+                ],
+                scenarios: [
+                    '墙内管道漏水检测', '煤气泄漏安全检查', '热水器安全检测',
+                    '餐馆定期气体检测', '房屋买卖前安全排查', '装修后管道验收'
+                ]
+            }
+        };
+
+        // 显示设备详情
+        function showEquipmentDetail(equipmentId) {
+            const equipment = equipmentData[equipmentId];
+            if (!equipment) return;
+
+            const modal = document.getElementById('equipmentModal');
+            
+            // 设置标题和描述
+            document.getElementById('equipmentTitle').textContent = equipment.title;
+            document.getElementById('equipmentDesc').textContent = equipment.description;
+            
+            // 设置媒体展示
+            const mediaContainer = document.getElementById('equipmentMedia');
+            if (equipment.media.type === 'video') {
+                mediaContainer.innerHTML = `
+                    <video controls class="w-full rounded-xl" poster="${equipment.media.poster}">
+                        <source src="${equipment.media.source}" type="video/mp4">
+                        您的浏览器不支持视频播放
+                    </video>
+                `;
+            } else if (equipment.media.type === 'images') {
+                mediaContainer.innerHTML = `
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        ${equipment.media.sources.map(src => `
+                            <img src="${src}" class="w-full h-48 object-cover rounded-lg" alt="${equipment.title}">
+                        `).join('')}
+                    </div>
+                `;
+            } else if (equipment.media.type === 'image') {
+                mediaContainer.innerHTML = `
+                    <img src="${equipment.media.source}" class="w-full h-64 object-cover rounded-xl" alt="${equipment.title}">
+                `;
+            } else if (equipment.media.type === 'icon') {
+                mediaContainer.innerHTML = `
+                    <div class="h-64 bg-gradient-to-br ${equipment.media.gradient} rounded-xl flex items-center justify-center">
+                        <i class="fas ${equipment.media.icon} text-9xl text-white opacity-30"></i>
+                    </div>
+                `;
+            }
+            
+            // 设置功能列表
+            const featuresList = document.getElementById('equipmentFeatures');
+            featuresList.innerHTML = equipment.features.map(feature => 
+                `<li>${feature}</li>`
+            ).join('');
+            
+            // 设置技术优势
+            const advantagesContainer = document.getElementById('equipmentAdvantages');
+            advantagesContainer.innerHTML = equipment.advantages.map(adv => `
+                <div class="flex items-start gap-3 bg-gray-50 rounded-lg p-3">
+                    <span class="text-2xl">${adv.icon}</span>
+                    <span class="text-sm text-gray-700">${adv.text}</span>
+                </div>
+            `).join('');
+            
+            // 设置应用场景
+            const scenariosContainer = document.getElementById('equipmentScenarios');
+            scenariosContainer.innerHTML = equipment.scenarios.map(scenario => `
+                <span class="bg-blue-100 text-blue-700 text-xs px-3 py-1.5 rounded-full font-semibold">
+                    ${scenario}
+                </span>
+            `).join('');
+            
+            // 显示模态框
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // 关闭设备详情模态框
+        function closeEquipmentModal(event) {
+            // 如果提供了event且点击的是背景，或者没有提供event（直接调用）
+            if (!event || event.target === event.currentTarget) {
+                const modal = document.getElementById('equipmentModal');
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // ESC键关闭模态框
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeEquipmentModal();
+            }
+        });
     </script>
 
 </body>
