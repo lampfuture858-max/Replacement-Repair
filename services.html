@@ -1335,6 +1335,15 @@
             modal.classList.remove('hidden');
             modal.classList.add('flex');
             document.body.style.overflow = 'hidden';
+            
+            // 滚动到模态框顶部
+            setTimeout(() => {
+                const modalContent = modal.querySelector('.overflow-y-auto');
+                if (modalContent) {
+                    modalContent.scrollTop = 0;
+                }
+                window.scrollTo(0, 0);
+            }, 50);
         }
 
         // 关闭设备详情模态框
