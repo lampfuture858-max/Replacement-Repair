@@ -950,8 +950,8 @@
                         <a href="javascript:void(0)" onclick="if(window.innerWidth < 768) { showService('s5'); } else { window.location.href='#s5'; } toggleMobileMenu(); return false;">煤气管道检测</a>
                     </div>
                 </div>
-                <a href="#equipment" onclick="toggleMobileMenu()">专业设备</a>
-                <a href="#process" onclick="toggleMobileMenu()">服务流程</a>
+                <a href="javascript:void(0)" onclick="toggleMobileMenu(); setTimeout(() => { window.location.hash='equipment'; }, 100); return false;">专业设备</a>
+                <a href="javascript:void(0)" onclick="toggleMobileMenu(); setTimeout(() => { window.location.hash='process'; }, 100); return false;">服务流程</a>
                 <a href="blog.html" onclick="toggleMobileMenu()">博客</a>
                 <a href="contact.html" onclick="toggleMobileMenu()">联系我们</a>
             </div>
