@@ -77,3 +77,30 @@ body { font-family: 'Noto Sans SC', sans-serif; }
 	position: relative;
 	flex-shrink: 0;
 }
+
+/* Mobile modal adjustments */
+@media (max-width: 768px) {
+	#serviceDetailModal .bg-white {
+		max-height: calc(100vh - 1rem);
+		width: calc(100% - 1rem);
+	}
+	#serviceDetailModal .bg-white .p-8 {
+		padding: 1.5rem !important;
+	}
+	#serviceDetailModal .bg-white > div.p-8 {
+		max-height: calc(100vh - 5rem);
+	}
+}
+
+@media (max-width: 480px) {
+	#serviceDetailModal .bg-white {
+		max-height: calc(100vh - 0.5rem);
+		border-radius: 0.5rem;
+	}
+	#serviceDetailModal .bg-white .p-8 {
+		padding: 1rem !important;
+	}
+	#serviceDetailModal .bg-white > div.p-8 {
+		max-height: calc(100vh - 3rem);
+	}
+}

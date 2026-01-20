@@ -265,6 +265,83 @@ function showService(serviceId) {
         if (data.desc) descEl.textContent = data.desc;
     }
     
+    // 添加案例显示 - 直接在模态框中创建案例部分
+    // 寻找或创建案例容器
+    var casesContainer = modal.querySelector('[id="serviceCases"]') || 
+                        document.getElementById('serviceCases');
+    
+    if (!casesContainer) {
+        // 如果不存在，在描述之后创建
+        var descEl = modal.querySelector('#serviceDesc');
+        casesContainer = document.createElement('div');
+        casesContainer.id = 'serviceCases';
+        casesContainer.className = 'mb-6';
+        casesContainer.innerHTML = '<h3 class="font-bold text-lg mb-3 text-slate-800">💼 客户案例</h3><div id="servicesCasesContent" class="grid grid-cols-1 gap-2 sm:gap-3"></div>';
+        
+        if (descEl && descEl.parentNode) {
+            descEl.parentNode.insertBefore(casesContainer, descEl.nextSibling);
+        } else {
+            modal.querySelector('.p-8').appendChild(casesContainer);
+        }
+    }
+    
+    var casesContent = casesContainer.querySelector('#servicesCasesContent') ||
+                      document.getElementById('servicesCasesContent');
+    
+    if (casesContainer && casesContent) {
+        // 案例数据定义
+        var casesData = {
+            's1': [
+                { name: '曼哈顿公寓主卧卫生间返水', problem: '主卧卫生间每次冲厕所就返水，楼下住户已投诉3次。用管道疏通机试过多次都不行。', solution: '电脑摄像定位堵点，使用高压水机彻底冲洗，并更换破损接头，2.5 小时恢复正常排水。', feedback: '⭐⭐⭐⭐⭐ "专业又靠谱，几分钟就看出问题，价位也合理。"', location: '📍 曼哈顿上东城', time: '⏱ 2024年10月' },
+                { name: '法拉盛中餐馆厨房下水漏水', problem: '厨房下水管接头滴水半个月，楼下卖场天花板被泡坏，多家维修报价超 2000 美元。', solution: '拆检接头并清理油污，更换耐高温密封胶与螺栓，加装防震垫圈，半小时交付使用。', feedback: '⭐⭐⭐⭐⭐ "报价透明、效率超快，餐厅当晚就恢复营业。"', location: '📍 法拉盛缅街', time: '⏱ 2024年9月' },
+                { name: '皇后区老房子来水管冻裂', problem: '严寒夜里铜管冻裂淹水，邻居认为需要整屋换管，预算高昂。', solution: '仅更换破裂段并包覆保温棉，外加伴热带防再冻裂，总成本控制在 350 美元。', feedback: '⭐⭐⭐⭐⭐ "花小钱办大事，师傅把冬季防护也一并教会我们。"', location: '📍 皇后区森林小丘', time: '⏱ 2024年1月' }
+            ],
+            's2': [
+                { name: '皇后区整栋楼主下水道堵塞', problem: '四层住宅楼主下水道长期返水，多家公司建议挖街换管，报价高达 8000 美元。', solution: '电脑摄像定位堵塞在街管接口，直接使用高压水机清除油脂杂物，3 小时免挖街恢复排水。', feedback: '⭐⭐⭐⭐⭐ "省了6000多块！还不用破坏街道。对比其他公司的报价，真是天壤之别。"', location: '📍 皇后区牙买加', time: '⏱ 2024年8月' },
+                { name: '布鲁克林街道下水管树根穿破', problem: '整条街道下水道堵塞，最后排查发现是树根穿破了下水管，邻近3户都受影响，城市部门要求业主自费修复。', solution: '先用高压水机清理树根，再精准挖开 30 米破损段更换新管，并原样恢复路面。', feedback: '⭐⭐⭐⭐⭐ "方案专业靠谱，还协助协调邻里与市政验收。"', location: '📍 布鲁克林展望高地', time: '⏱ 2024年7月' },
+                { name: '曼哈顿餐馆厨房油脂堵塞', problem: '忙碌餐馆每周堵一次，下班后仍需临时疏通，严重影响营业。', solution: '晚间停业后进行高压热水冲洗，彻底剥离油垢并制定月度保养计划，3 个月无再堵。', feedback: '⭐⭐⭐⭐⭐ "一次彻底解决，厨房运转顺多了。"', location: '📍 曼哈顿中城', time: '⏱ 2024年6月' }
+            ],
+            's3': [
+                { name: '曼哈顿豪宅隐蔽漏水排查', problem: '业主水费突然翻倍却找不到漏点，装修高端不敢随意拆墙。', solution: '使用超声波与热成像交叉定位，仅拆一块瓷砖更换接头，保留全部装饰。', feedback: '⭐⭐⭐⭐⭐ "装修一点没破坏，终于解决水费异常。"', location: '📍 曼哈顿上东区', time: '⏱ 2024年11月' },
+                { name: '法拉盛公寓来水压力异常', problem: '整栋楼高层没水、低层水压过大，多次维修无果。', solution: '检测后确认楼顶储水箱进水阀故障，当天更换并校准压力，恢复全楼供水。', feedback: '⭐⭐⭐⭐⭐ "费用低还高效，住户满意度大幅提升。"', location: '📍 法拉盛缅街', time: '⏱ 2024年5月' },
+                { name: '布朗士民宅水表故障', problem: '三个月水费暴涨至 800 美元，水务公司判定为用水过量。', solution: '逐点排查确认水表失准，协助提交报告并更换新表，成功追回多付费用。', feedback: '⭐⭐⭐⭐⭐ "不仅修好还帮忙维权，真正为客户着想。"', location: '📍 布朗士日落公园', time: '⏱ 2024年4月' }
+            ],
+            's4': [
+                { name: '布朗士暖气炉紧急抢修', problem: '一月寒流夜间锅炉停机，全屋温度骤降，热线维修均排不到号。', solution: '30 分钟到场排查电控故障并清理燃烧器积碳，更换点火器后立即恢复供暖。', feedback: '⭐⭐⭐⭐⭐ "半夜救了全家，暖气立刻热起来，非常感谢。"', location: '📍 布朗士莫里尼亚', time: '⏱ 2024年1月' },
+                { name: '曼哈顿热水炉延寿保养', problem: '使用 30 年的储水式热水炉不出热水，多位维修工建议整机更换。', solution: '检测后仅更换温度传感器与加热棒，并清洗水垢，520 美元恢复热水供应。', feedback: '⭐⭐⭐⭐⭐ "节省了几千块的换机费用，热水量比以前还稳定。"', location: '📍 曼哈顿中城', time: '⏱ 2024年3月' },
+                { name: '皇后区地下室抽水泵安装', problem: '新购公寓地下室逢雨必积水，担心潮湿霉变影响房屋价值。', solution: '根据排水高度设计坑位，安装自动浮球泵并配置后备电源，交付前完成试泵培训。', feedback: '⭐⭐⭐⭐⭐ "暴雨后地下室一直干爽，还安排定期巡检。"', location: '📍 皇后区牙买加', time: '⏱ 2024年2月' }
+            ],
+            's5': [
+                { name: '曼哈顿烤箱煤气泄漏紧急排查', problem: '业主闻到厨房有轻微的煤气味，但检测器没有显示。不确定是否真的泄漏，也不知道找谁。', solution: '用专业气体检测仪器进行全面排查，定位到烤箱进气接头处有微小泄漏。更换了接头和胶管，进行压力测试确认没有问题。', feedback: '⭐⭐⭐⭐⭐ "太专业了！不仅修好泄漏，还详细解释了煤气安全知识。心理踏实多了。"', location: '📍 曼哈顿上西城', time: '⏱ 2024年10月' },
+                { name: '法拉盛餐馆定期煤气安全检测', problem: '餐馆每月被要求进行煤气安全检测，但很难找到可靠的检测服务。之前的检测人员标准不统一。', solution: '与餐馆建立了定期检测合作（每季度一次），每次都用标准化检测、出具检测报告、记录存档。现在餐馆的煤气安全完全合规，审计无忧。', feedback: '⭐⭐⭐⭐⭐ "找到了稳定的合作方，再也不用为煤气安全检测发愁了。推荐所有餐馆都这样做。"', location: '📍 法拉盛缅街', time: '⏱ 2024年9月' },
+                { name: '皇后区整栋楼煤气管道更新', problem: '楼管发现旧楼的煤气管道已有40年历史，多处锈蚀。城市部门要求更新以确保安全。', solution: '制定了分阶段更新方案，最小化对住户的影响。更换了全部旧管道、安装新的安全装置、通过城市部门检验。整个项目专业、高效、安全。', feedback: '⭐⭐⭐⭐⭐ "大工程做得井井有条，住户没有怨言。城市部门一次通过检验，杨师傅的专业让我们非常满意。"', location: '📍 皇后区牙买加', time: '⏱ 2024年8月' }
+            ]
+        };
+        
+        // 获取该服务的案例数据
+        var cases = casesData[serviceId];
+        if (cases && cases.length > 0) {
+            casesContent.innerHTML = '';
+            cases.forEach(function(caseItem) {
+                var caseEl = document.createElement('div');
+                caseEl.className = 'bg-gradient-to-br from-gray-50 to-white rounded-lg p-2 sm:p-3 border border-gray-200 text-xs sm:text-sm';
+                caseEl.innerHTML = '<p class="text-xs text-red-600 font-bold uppercase mb-1">真实案例</p>' +
+                    '<h4 class="text-xs sm:text-sm font-bold text-slate-800 mb-1">' + caseItem.name + '</h4>' +
+                    '<p class="text-xs text-gray-600 mb-1"><strong>问题：</strong>' + caseItem.problem + '</p>' +
+                    '<p class="text-xs text-gray-600 mb-2"><strong>解决：</strong>' + caseItem.solution + '</p>' +
+                    '<p class="text-xs mb-1"><strong class="text-slate-800">反馈：</strong><span class="text-gray-600">' + caseItem.feedback + '</span></p>' +
+                    '<p class="text-xs text-gray-500">' + caseItem.location + ' | ' + caseItem.time + '</p>';
+                casesContent.appendChild(caseEl);
+            });
+            // 移除hidden class并设置display
+            casesContainer.classList.remove('hidden');
+            casesContainer.style.display = 'block';
+        } else {
+            casesContainer.classList.add('hidden');
+            casesContainer.style.display = 'none';
+        }
+    }
+    
     modal.classList.add('active');
     // 防止背景滚动
     document.documentElement.style.overflow = 'hidden';
@@ -358,7 +435,6 @@ function toggleCases(serviceId) {
     const toggle = document.getElementById('toggle-' + serviceId);
     
     if (!container) {
-        console.log('找不到容器: cases-' + serviceId + '-container');
         return;
     }
     
@@ -366,12 +442,10 @@ function toggleCases(serviceId) {
         // 显示
         container.classList.remove('hidden');
         if (toggle) toggle.style.transform = 'rotate(180deg)';
-        console.log('展开: ' + serviceId);
     } else {
         // 隐藏
         container.classList.add('hidden');
         if (toggle) toggle.style.transform = 'rotate(0deg)';
-        console.log('折叠: ' + serviceId);
     }
 }
 
