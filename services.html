@@ -895,9 +895,9 @@
             <!-- 设备5：管线探测仪 -->
             <div class="bg-white rounded-xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition-shadow cursor-pointer group" onclick="showEquipmentDetail('detector')">
                 <div class="relative h-48 bg-gradient-to-br from-yellow-50 to-amber-50 overflow-hidden">
-                    <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-yellow-400 to-amber-600">
-                        <i class="fas fa-radar text-8xl text-white opacity-30"></i>
-                    </div>
+                    <video class="w-full h-full object-cover" muted loop onmouseover="this.play()" onmouseout="this.pause()">
+                        <source src="videos/管线探测仪.mp4" type="video/mp4">
+                    </video>
                     <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                         <span class="bg-white text-red-600 px-6 py-3 rounded-full font-bold text-sm">📡 点击查看详情</span>
                     </div>
@@ -1219,9 +1219,9 @@
                 title: '管线探测仪',
                 description: '采用电磁感应和超声波技术的专业管线定位设备，能够在不开挖的情况下，精确探测地下管道的走向、深度和位置。配备GPS定位系统，可生成详细的管线分布图。',
                 media: {
-                    type: 'icon',
-                    icon: 'fa-radar',
-                    gradient: 'from-yellow-400 to-amber-600'
+                    type: 'video',
+                    source: 'videos/管线探测仪.mp4',
+                    poster: 'images/first.png'
                 },
                 features: [
                     '电磁感应技术，探测金属管道走向',
