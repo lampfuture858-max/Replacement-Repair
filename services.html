@@ -481,14 +481,17 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- 案例 1 -->
-                <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow">
+                <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow cursor-pointer" onclick="showCaseDetail('case-s1-1')">
                     <div class="relative">
-                        <video controls preload="metadata" playsinline class="w-full h-56 object-cover">
+                        <video preload="metadata" playsinline class="w-full h-56 object-cover">
                             <source src="videos/来水维修.mp4" type="video/mp4">
                             您的浏览器不支持视频播放
                         </video>
                         <div class="absolute top-2 left-2">
                             <span class="bg-red-600 text-white text-xs px-2 py-1 rounded-full font-bold">🎥 实录视频</span>
+                        </div>
+                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                            <span class="bg-white text-red-600 px-6 py-3 rounded-full font-bold text-sm">🔍 点击查看详情</span>
                         </div>
                     </div>
                     <div class="p-6">
@@ -1215,11 +1218,175 @@
         </div>
     </footer>
 
+    <!-- Case Detail Modal -->
+    <div id="caseModal" class="fixed inset-0 bg-black/80 z-[100] hidden items-center justify-center p-4" onclick="closeCaseModal(event)">
+        <div class="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto relative" onclick="event.stopPropagation()">
+            <button onclick="closeCaseModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 z-10 bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            
+            <div class="p-6">
+                <!-- 视频展示区 -->
+                <div id="caseVideo" class="mb-6 rounded-xl overflow-hidden"></div>
+                
+                <!-- 案例标题和描述 -->
+                <div id="caseContent"></div>
+            </div>
+        </div>
+    </div>
+
     <script src="js/main.js?v=20260120b"></script>
     
     <script>
         // 不做任何操作 - 案例已直接嵌入HTML中，自动显示
         function showCases(serviceId) {}
+
+        // 案例详情数据
+        const caseData = {
+            'case-s1-1': {
+                video: 'videos/来水维修.mp4',
+                title: '曼哈顿公寓主卧卫生间返水',
+                location: '曼哈顿上东城',
+                problem: '主卧卫生间每次冲厕所就返水，楼下住户已投诉多次。用管道疏通机试过多次都不行。',
+                solution: '杨师傅用电脑摄像内窥镜定位到3楼与4楼之间的主下水管内有油脂堆积 + 陶片碎裂，用高压水机清理 + 换管接头，共耗时2.5小时。',
+                tags: ['电脑摄像诊断', '高压水机', '换管接头'],
+                feedback: '⭐⭐⭐⭐⭐ "非常专业！一眼看出问题所在，效率高，价格也很公道，已向朋友推荐！"'
+            },
+            'case-s2-1': {
+                video: 'videos/更换厨房下水管道.mp4',
+                title: '厨房下水管道更换全过程',
+                location: '纽约',
+                problem: '厨房下水管道老化漏水，需要更换新管道。',
+                solution: '详细展示厨房下水管道拆除、更换、安装全流程，确保排水通畅无漏水。',
+                tags: ['管道更换', '厨房维修', '完整流程']
+            },
+            'case-s2-2': {
+                video: 'videos/疏通住家总排水管道.mp4',
+                title: '住家总排水管道疏通实录',
+                location: '纽约',
+                problem: '住宅总排水管道堵塞，导致排水不畅。',
+                solution: '展示使用专业疏通设备清理住宅总排水管道，快速恢复排水功能的全过程。',
+                tags: ['管道疏通', '住宅服务', '专业设备']
+            },
+            'case-s2-3': {
+                video: 'videos/疏通指甲店和足浴店管道.mp4',
+                title: '指甲店/足浴店管道疏通',
+                location: '纽约',
+                problem: '商业场所管道因高频使用导致堵塞。',
+                solution: '商业场所管道疏通服务，处理高频使用导致的堵塞问题，确保正常营业。',
+                tags: ['商业疏通', '快速响应', '营业保障']
+            }
+        };
+
+        // 显示案例详情
+        function showCaseDetail(caseId) {
+            const caseInfo = caseData[caseId];
+            if (!caseInfo) return;
+
+            const modal = document.getElementById('caseModal');
+            const videoContainer = document.getElementById('caseVideo');
+            const contentContainer = document.getElementById('caseContent');
+
+            // 设置视频
+            videoContainer.innerHTML = `
+                <video controls autoplay preload="metadata" playsinline class="w-full">
+                    <source src="${caseInfo.video}" type="video/mp4">
+                    您的浏览器不支持视频播放
+                </video>
+            `;
+
+            // 设置内容
+            let contentHTML = `
+                <h2 class="text-2xl font-black text-slate-800 mb-4">${caseInfo.title}</h2>
+            `;
+
+            if (caseInfo.problem) {
+                contentHTML += `
+                    <div class="mb-4">
+                        <h3 class="font-bold text-lg text-slate-800 mb-2">🔍 问题描述</h3>
+                        <p class="text-gray-600 leading-relaxed">${caseInfo.problem}</p>
+                    </div>
+                `;
+            }
+
+            if (caseInfo.solution) {
+                contentHTML += `
+                    <div class="mb-4">
+                        <h3 class="font-bold text-lg text-slate-800 mb-2">✅ 解决方案</h3>
+                        <p class="text-gray-600 leading-relaxed">${caseInfo.solution}</p>
+                    </div>
+                `;
+            }
+
+            if (caseInfo.tags && caseInfo.tags.length > 0) {
+                contentHTML += `
+                    <div class="mb-4">
+                        <div class="flex gap-2 flex-wrap">
+                            ${caseInfo.tags.map(tag => `
+                                <span class="bg-blue-100 text-blue-700 text-xs px-3 py-1.5 rounded-full font-semibold">${tag}</span>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            if (caseInfo.feedback) {
+                contentHTML += `
+                    <div class="mb-6 pb-6 border-b">
+                        <h3 class="font-bold text-lg text-slate-800 mb-2">💬 客户反馈</h3>
+                        <p class="text-gray-600">${caseInfo.feedback}</p>
+                    </div>
+                `;
+            }
+
+            if (caseInfo.location) {
+                contentHTML += `
+                    <p class="text-sm text-gray-500 mb-6">📍 ${caseInfo.location}</p>
+                `;
+            }
+
+            contentHTML += `
+                <div class="flex gap-3 flex-wrap">
+                    <a href="tel:3477268777" class="flex-1 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-xl font-bold text-center transition">
+                        📞 立即拨打 347-726-8777
+                    </a>
+                    <button onclick="toggleQR(); closeCaseModal();" class="flex-1 bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 rounded-xl font-bold transition">
+                        💬 微信咨询
+                    </button>
+                </div>
+            `;
+
+            contentContainer.innerHTML = contentHTML;
+
+            // 显示模态框
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+
+            // 滚动到顶部
+            setTimeout(() => {
+                const modalContent = modal.querySelector('.overflow-y-auto');
+                if (modalContent) {
+                    modalContent.scrollTop = 0;
+                }
+                window.scrollTo(0, 0);
+            }, 50);
+        }
+
+        // 关闭案例详情弹窗
+        function closeCaseModal(event) {
+            if (!event || event.target === event.currentTarget) {
+                const modal = document.getElementById('caseModal');
+                const videoContainer = document.getElementById('caseVideo');
+                
+                // 停止视频播放
+                videoContainer.innerHTML = '';
+                
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.style.overflow = 'auto';
+            }
+        }
 
         // 设备详细信息数据
         const equipmentData = {
@@ -1474,6 +1641,7 @@
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeEquipmentModal();
+                closeCaseModal();
             }
         });
     </script>
