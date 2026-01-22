@@ -39,24 +39,66 @@
         }
     </style>
     <script>
-        // 视频懒加载：滚动到视口时才加载
+        // 点击加载视频 - 为特定案例动态添加视频
         document.addEventListener('DOMContentLoaded', function() {
-            const videos = document.querySelectorAll('video[preload="metadata"]');
+            // 定义需要添加视频的案例（通过标题匹配）
+            const videoMap = {
+                '曼哈顿公寓主卧卫生间返水': 'videos/更换厨房下水管道.mp4',
+                '皇后区整栋楼主下水道堵塞': 'videos/疏通住家总排水管道.mp4',
+                '曼哈顿豪宅隐蔽漏水排查': 'videos/疏通指甲店和足浴店管道.mp4',
+                '曼哈顿烤箱煤气泄漏紧急排查': 'videos/餐馆接煤气管道.mp4'
+            };
             
-            const videoObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const video = entry.target;
-                        video.load();
-                        videoObserver.unobserve(video);
+            // 找到所有案例标题
+            document.querySelectorAll('h3.text-lg').forEach(title => {
+                const titleText = title.textContent.trim();
+                const videoSrc = videoMap[titleText];
+                
+                if (videoSrc) {
+                    // 找到父容器
+                    const container = title.closest('.p-6');
+                    if (container) {
+                        // 创建视频加载按钮
+                        const videoLoader = document.createElement('div');
+                        videoLoader.className = 'video-loader mb-4';
+                        videoLoader.innerHTML = `
+                            <button class="w-full bg-gradient-to-r from-red-50 to-orange-50 border-2 border-red-200 rounded-lg p-6 text-center hover:from-red-100 hover:to-orange-100 transition group">
+                                <svg class="w-16 h-16 mx-auto mb-3 text-red-600 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/>
+                                </svg>
+                                <span class="text-base font-bold text-red-700 block">🎥 点击观看施工视频</span>
+                                <span class="text-sm text-gray-600 block mt-2">首次加载需要几秒钟</span>
+                            </button>
+                        `;
+                        
+                        // 插入到客户反馈后面
+                        const feedback = container.querySelector('p.text-sm.mb-4');
+                        if (feedback && feedback.nextElementSibling) {
+                            feedback.nextElementSibling.before(videoLoader);
+                        }
+                        
+                        // 点击加载视频
+                        const button = videoLoader.querySelector('button');
+                        button.addEventListener('click', function() {
+                            // 创建视频元素
+                            const videoEl = document.createElement('video');
+                            videoEl.controls = true;
+                            videoEl.playsinline = true;
+                            videoEl.className = 'w-full rounded-lg mb-4';
+                            videoEl.innerHTML = `<source src="${videoSrc}" type="video/mp4">您的浏览器不支持视频播放`;
+                            
+                            // 替换按钮
+                            videoLoader.innerHTML = '';
+                            videoLoader.appendChild(videoEl);
+                            
+                            // 自动播放
+                            videoEl.load();
+                            videoEl.play().catch(() => {
+                                // 自动播放失败，没关系，用户可以手动点击播放
+                            });
+                        }, {once: true});
                     }
-                });
-            }, {
-                rootMargin: '50px'
-            });
-            
-            videos.forEach(video => {
-                videoObserver.observe(video);
+                }
             });
         });
     </script>
@@ -177,12 +219,6 @@
                                 <p class="text-xs text-red-600 font-bold uppercase mb-1">真实案例</p>
                                 <h4 class="text-sm font-bold text-slate-800 mb-2">曼哈顿公寓主卧卫生间返水</h4>
                                 
-                                <!-- 施工视频 -->
-                                <video controls preload="metadata" playsinline class="w-full rounded-lg mb-3">
-                                    <source src="videos/更换厨房下水管道.mp4" type="video/mp4">
-                                    您的浏览器不支持视频播放
-                                </video>
-                                
                                 <p class="text-xs text-gray-600 mb-2"><strong>问题：</strong>主卧卫生间每次冲厕所就返水，楼下住户已投诉3次。用管道疏通机试过多次都不行。</p>
                                 <p class="text-xs text-gray-600 mb-2"><strong>解决：</strong>电脑摄像定位堵点，使用高压水机彻底冲洗，并更换破损接头，2.5 小时恢复正常排水。</p>
                                 <div class="flex gap-1 flex-wrap mb-2">
@@ -247,12 +283,6 @@
                                 <p class="text-xs text-red-600 font-bold uppercase mb-1">真实案例</p>
                                 <h4 class="text-sm font-bold text-slate-800 mb-2">皇后区整栋楼主下水道堵塞</h4>
                                 
-                                <!-- 施工视频 -->
-                                <video controls preload="metadata" playsinline class="w-full rounded-lg mb-3">
-                                    <source src="videos/疏通住家总排水管道.mp4" type="video/mp4">
-                                    您的浏览器不支持视频播放
-                                </video>
-                                
                                 <p class="text-xs text-gray-600 mb-2"><strong>问题：</strong>四层住宅楼主下水道长期返水，多家公司建议挖街换管，报价高昂。</p>
                                 <p class="text-xs text-gray-600 mb-2"><strong>解决：</strong>电脑摄像定位堵塞在街管接口，直接使用高压水机清除油脂杂物，3 小时免挖街恢复排水。</p>
                                 <div class="flex gap-1 flex-wrap mb-2">
@@ -315,12 +345,6 @@
                             <article class="bg-gradient-to-br from-gray-50 to-white rounded-xl p-4 border border-gray-200 hover:shadow-lg transition-shadow">
                                 <p class="text-xs text-red-600 font-bold uppercase mb-1">真实案例</p>
                                 <h4 class="text-sm font-bold text-slate-800 mb-2">曼哈顿豪宅隐蔽漏水排查</h4>
-                                
-                                <!-- 施工视频 -->
-                                <video controls preload="metadata" playsinline class="w-full rounded-lg mb-3">
-                                    <source src="videos/疏通指甲店和足浴店管道.mp4" type="video/mp4">
-                                    您的浏览器不支持视频播放
-                                </video>
                                 
                                 <p class="text-xs text-gray-600 mb-2"><strong>问题：</strong>水费突然翻倍却找不到漏点，装修高端不敢随意拆墙。</p>
                                 <p class="text-xs text-gray-600 mb-2"><strong>解决：</strong>使用超声波与热成像交叉定位，仅拆一块瓷砖更换接头，保留全部装饰。</p>
@@ -446,12 +470,6 @@
                             <article class="bg-gradient-to-br from-gray-50 to-white rounded-xl p-4 border border-gray-200 hover:shadow-lg transition-shadow">
                                 <p class="text-xs text-red-600 font-bold uppercase mb-1">真实案例</p>
                                 <h4 class="text-sm font-bold text-slate-800 mb-2">曼哈顿烤箱煤气泄漏紧急排查</h4>
-                                
-                                <!-- 施工视频 -->
-                                <video controls preload="metadata" playsinline class="w-full rounded-lg mb-3">
-                                    <source src="videos/餐馆接煤气管道.mp4" type="video/mp4">
-                                    您的浏览器不支持视频播放
-                                </video>
                                 
                                 <p class="text-xs text-gray-600 mb-2"><strong>问题：</strong>业主闻到厨房有轻微的煤气味，但检测器没有显示。不确定是否真的泄漏，也不知道找谁。</p>
                                 <p class="text-xs text-gray-600 mb-2"><strong>解决：</strong>杨师傅用专业气体检测仪器进行全面排查，定位到烤箱进气接头处有微小泄漏。更换了接头和胶管，进行压力测试确认没有问题。</p>
