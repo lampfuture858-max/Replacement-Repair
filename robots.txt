@@ -1,0 +1,20 @@
+# 昇通水电冷暖 - robots.txt
+User-agent: *
+Allow: /
+Disallow: /tools/
+
+# 网站地图
+Sitemap: https://www.shengtongreplacementandrepair.us/sitemap.xml
+
+# 主流搜索引擎
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+# 爬取延迟
+Crawl-delay: 1
