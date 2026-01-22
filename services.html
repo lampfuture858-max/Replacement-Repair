@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
+        /* 平滑滚动 */
+        html {
+            scroll-behavior: smooth;
+        }
+        
         #toggle-s1, #toggle-s2, #toggle-s3, #toggle-s4, #toggle-s5 { display: none !important; }
         #cases-s1-content, #cases-s2-content, #cases-s3-content, #cases-s4-content, #cases-s5-content { display: block !important; }
         #cases-s1-container, #cases-s2-container, #cases-s3-container, #cases-s4-container, #cases-s5-container { display: block !important; }
@@ -21,6 +26,11 @@
         .service-content-hidden {
             max-height: 0;
             transition: max-height 0.3s ease;
+        }
+        
+        /* 为目标区域添加偏移以适应粘性导航 */
+        section[id] {
+            scroll-margin-top: 100px;
         }
     </style>
 </head>
