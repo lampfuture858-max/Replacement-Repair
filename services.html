@@ -11,6 +11,17 @@
         #toggle-s1, #toggle-s2, #toggle-s3, #toggle-s4, #toggle-s5 { display: none !important; }
         #cases-s1-content, #cases-s2-content, #cases-s3-content, #cases-s4-content, #cases-s5-content { display: block !important; }
         #cases-s1-container, #cases-s2-container, #cases-s3-container, #cases-s4-container, #cases-s5-container { display: block !important; }
+        
+        /* 服务内容折叠展开样式 */
+        .service-content {
+            max-height: 5000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .service-content-hidden {
+            max-height: 0;
+            transition: max-height 0.3s ease;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -67,31 +78,31 @@
         <div class="mb-8">
             <h3 class="text-2xl font-bold text-slate-800 mb-4">服务概览</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-                <a href="javascript:void(0)" class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-red-300 flex flex-col items-start transition cursor-pointer" onclick="scrollToSection('cases-s1'); return false;">
+                <a href="#s1" class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-red-300 flex flex-col items-start transition cursor-pointer">
                     <img src="images/icon1.png" class="w-10 h-10 mb-3" alt="维修图标">
                     <strong class="font-bold mb-1">来水/下水管维修</strong>
                     <span class="text-xs text-gray-500">漏水、返水、不通、老管换新及密封修复。</span>
                     <span class="text-xs text-red-600 font-bold mt-2 sm:hidden">👆 点击查看详情</span>
                 </a>
-                <a href="javascript:void(0)" class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-red-300 flex flex-col items-start transition cursor-pointer" onclick="scrollToSection('cases-s2'); return false;">
+                <a href="#s2" class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-red-300 flex flex-col items-start transition cursor-pointer">
                     <img src="images/icon2.png" class="w-10 h-10 mb-3" alt="疏通图标">
                     <strong class="font-bold mb-1">疏通 & 挖街换管</strong>
                     <span class="text-xs text-gray-500">高压水机、电脑摄像定位，必要时挖街换管。</span>
                     <span class="text-xs text-red-600 font-bold mt-2 sm:hidden">👆 点击查看详情</span>
                 </a>
-                <a href="javascript:void(0)" class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-red-300 flex flex-col items-start transition cursor-pointer" onclick="scrollToSection('cases-s3'); return false;">
+                <a href="#s3" class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-red-300 flex flex-col items-start transition cursor-pointer">
                     <img src="images/icon3.png" class="w-10 h-10 mb-3" alt="水系统图标">
                     <strong class="font-bold mb-1">水系统维修</strong>
                     <span class="text-xs text-gray-500">总开关、阀门、水压排查、隐蔽漏水检测。</span>
                     <span class="text-xs text-red-600 font-bold mt-2 sm:hidden">👆 点击查看详情</span>
                 </a>
-                <a href="javascript:void(0)" class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-red-300 flex flex-col items-start transition cursor-pointer" onclick="scrollToSection('cases-s4'); return false;">
+                <a href="#s4" class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-red-300 flex flex-col items-start transition cursor-pointer">
                     <img src="images/icon4.png" class="w-10 h-10 mb-3 invert" alt="热水炉图标">
                     <strong class="font-bold mb-1">水泵/热水 & 暖气</strong>
                     <span class="text-xs text-gray-500">抽水泵、热水炉、暖气炉安装与维修。</span>
                     <span class="text-xs text-red-600 font-bold mt-2 sm:hidden">👆 点击查看详情</span>
                 </a>
-                <a href="javascript:void(0)" class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-red-300 flex flex-col items-start transition cursor-pointer" onclick="scrollToSection('cases-s5'); return false;">
+                <a href="#s5" class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-red-300 flex flex-col items-start transition cursor-pointer">
                     <img src="images/icon1.png" class="w-10 h-10 mb-3" alt="煤气图标">
                     <strong class="font-bold mb-1">煤气管道检测</strong>
                     <span class="text-xs text-gray-500">煤气泄漏排查、压力测试与合规维修。</span>
@@ -108,9 +119,11 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- 服务1：来水/下水管维修 -->
             <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <div class="flex items-center justify-between cursor-pointer p-2 -mx-2 rounded hover:bg-gray-50 active:bg-gray-100 transition" onclick="showService('s1')">
-                    <h2 id="s1" class="text-xl font-black mb-0 flex-1">一、住宅 / 餐馆 / 商业来水、下水管维修</h2>
+                <div class="flex items-center justify-between cursor-pointer" onclick="toggleServiceContent('s1')">
+                    <h2 id="s1" class="text-xl font-black mb-0">一、住宅 / 餐馆 / 商业来水、下水管维修</h2>
+                    <i id="icon-s1" class="fas fa-chevron-down transition-transform"></i>
                 </div>
+                <div id="content-s1" class="service-content">
                 <ul class="list-inside list-disc text-gray-600 space-y-2 mt-4">
                     <li>来水管、下水管漏水快速查修与封堵</li>
                     <li>下水道堵塞、返水、不通诊断与疏通</li>
@@ -121,31 +134,18 @@
                 <div class="mt-6 pt-6 border-t border-gray-200">
                     <p class="text-sm font-bold text-slate-800 mb-3">💼 客户案例 & 实录视频</p>
                     <div id="cases-s1-content">
-                        <!-- 视频展示卡片 -->
-                        <div class="grid grid-cols-1 gap-4 mb-4">
-                            <div class="bg-gradient-to-br from-orange-50 to-red-50 rounded-xl p-4 border border-orange-200 hover:shadow-lg transition-shadow">
-                                <div class="flex items-center gap-2 mb-3">
-                                    <span class="bg-red-600 text-white text-xs px-2 py-1 rounded-full font-bold">🎥 实录视频</span>
-                                    <span class="text-xs text-gray-600">厨房下水管更换</span>
-                                </div>
-                                <video controls preload="metadata" playsinline class="w-full rounded-lg mb-3">
-                                    <source src="videos/更换厨房下水管道.mp4" type="video/mp4">
-                                    您的浏览器不支持视频播放
-                                </video>
-                                <h4 class="text-sm font-bold text-slate-800 mb-2">厨房下水管道更换全过程</h4>
-                                <p class="text-xs text-gray-600 mb-2">详细展示厨房下水管道拆除、更换、安装全流程，确保排水通畅无漏水。</p>
-                                <div class="flex gap-1 flex-wrap">
-                                    <span class="bg-orange-100 text-orange-700 text-xs px-2 py-1 rounded-full font-semibold">管道更换</span>
-                                    <span class="bg-red-100 text-red-700 text-xs px-2 py-1 rounded-full font-semibold">厨房维修</span>
-                                    <span class="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded-full font-semibold">完整流程</span>
-                                </div>
-                            </div>
-                        </div>
                         <!-- 文字案例 -->
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             <article class="bg-gradient-to-br from-gray-50 to-white rounded-xl p-4 border border-gray-200 hover:shadow-lg transition-shadow">
                                 <p class="text-xs text-red-600 font-bold uppercase mb-1">真实案例</p>
                                 <h4 class="text-sm font-bold text-slate-800 mb-2">曼哈顿公寓主卧卫生间返水</h4>
+                                
+                                <!-- 施工视频 -->
+                                <video controls preload="metadata" playsinline class="w-full rounded-lg mb-3">
+                                    <source src="videos/更换厨房下水管道.mp4" type="video/mp4">
+                                    您的浏览器不支持视频播放
+                                </video>
+                                
                                 <p class="text-xs text-gray-600 mb-2"><strong>问题：</strong>主卧卫生间每次冲厕所就返水，楼下住户已投诉3次。用管道疏通机试过多次都不行。</p>
                                 <p class="text-xs text-gray-600 mb-2"><strong>解决：</strong>电脑摄像定位堵点，使用高压水机彻底冲洗，并更换破损接头，2.5 小时恢复正常排水。</p>
                                 <div class="flex gap-1 flex-wrap mb-2">
@@ -185,13 +185,16 @@
                         </div>
                     </div>
                 </div>
+                </div>
             </section>
 
             <!-- 服务2：疏通 & 挖街换管 -->
             <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <div class="flex items-center justify-between cursor-pointer p-2 -mx-2 rounded hover:bg-gray-50 active:bg-gray-100 transition" onclick="showService('s2')">
-                    <h2 id="s2" class="text-xl font-black mb-0 flex-1">二、管道疏通 & 挖街换管</h2>
+                <div class="flex items-center justify-between cursor-pointer" onclick="toggleServiceContent('s2')">
+                    <h2 id="s2" class="text-xl font-black mb-0">二、管道疏通 & 挖街换管</h2>
+                    <i id="icon-s2" class="fas fa-chevron-down transition-transform"></i>
                 </div>
+                <div id="content-s2" class="service-content">
                 <ul class="list-inside list-disc text-gray-600 space-y-2 mt-4">
                     <li>室内外下水道专业疏通（手工 + 高压水机）</li>
                     <li>主下水管与街道主管堵塞定位与处理</li>
@@ -202,48 +205,18 @@
                 <div class="mt-6 pt-6 border-t border-gray-200">
                     <p class="text-sm font-bold text-slate-800 mb-3">💼 客户案例 & 实录视频</p>
                     <div id="cases-s2-content">
-                        <!-- 视频展示卡片 -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                            <div class="bg-gradient-to-br from-green-50 to-teal-50 rounded-xl p-4 border border-green-200 hover:shadow-lg transition-shadow">
-                                <div class="flex items-center gap-2 mb-3">
-                                    <span class="bg-red-600 text-white text-xs px-2 py-1 rounded-full font-bold">🎥 实录视频</span>
-                                    <span class="text-xs text-gray-600">住宅管道疏通</span>
-                                </div>
-                                <video controls preload="metadata" playsinline class="w-full rounded-lg mb-3">
-                                    <source src="videos/疏通住家总排水管道.mp4" type="video/mp4">
-                                    您的浏览器不支持视频播放
-                                </video>
-                                <h4 class="text-sm font-bold text-slate-800 mb-2">住家总排水管道疏通实录</h4>
-                                <p class="text-xs text-gray-600 mb-2">展示使用专业疏通设备清理住宅总排水管道，快速恢复排水功能的全过程。</p>
-                                <div class="flex gap-1 flex-wrap">
-                                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full font-semibold">管道疏通</span>
-                                    <span class="bg-teal-100 text-teal-700 text-xs px-2 py-1 rounded-full font-semibold">住宅服务</span>
-                                    <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-full font-semibold">专业设备</span>
-                                </div>
-                            </div>
-                            <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-4 border border-purple-200 hover:shadow-lg transition-shadow">
-                                <div class="flex items-center gap-2 mb-3">
-                                    <span class="bg-red-600 text-white text-xs px-2 py-1 rounded-full font-bold">🎥 实录视频</span>
-                                    <span class="text-xs text-gray-600">商业管道疏通</span>
-                                </div>
-                                <video controls preload="metadata" playsinline class="w-full rounded-lg mb-3">
-                                    <source src="videos/疏通指甲店和足浴店管道.mp4" type="video/mp4">
-                                    您的浏览器不支持视频播放
-                                </video>
-                                <h4 class="text-sm font-bold text-slate-800 mb-2">指甲店/足浴店管道疏通</h4>
-                                <p class="text-xs text-gray-600 mb-2">商业场所管道疏通服务，处理高频使用导致的堵塞问题，确保正常营业。</p>
-                                <div class="flex gap-1 flex-wrap">
-                                    <span class="bg-purple-100 text-purple-700 text-xs px-2 py-1 rounded-full font-semibold">商业疏通</span>
-                                    <span class="bg-pink-100 text-pink-700 text-xs px-2 py-1 rounded-full font-semibold">快速响应</span>
-                                    <span class="bg-orange-100 text-orange-700 text-xs px-2 py-1 rounded-full font-semibold">营业保障</span>
-                                </div>
-                            </div>
-                        </div>
                         <!-- 文字案例 -->
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             <article class="bg-gradient-to-br from-gray-50 to-white rounded-xl p-4 border border-gray-200 hover:shadow-lg transition-shadow">
                                 <p class="text-xs text-red-600 font-bold uppercase mb-1">真实案例</p>
                                 <h4 class="text-sm font-bold text-slate-800 mb-2">皇后区整栋楼主下水道堵塞</h4>
+                                
+                                <!-- 施工视频 -->
+                                <video controls preload="metadata" playsinline class="w-full rounded-lg mb-3">
+                                    <source src="videos/疏通住家总排水管道.mp4" type="video/mp4">
+                                    您的浏览器不支持视频播放
+                                </video>
+                                
                                 <p class="text-xs text-gray-600 mb-2"><strong>问题：</strong>四层住宅楼主下水道长期返水，多家公司建议挖街换管，报价高昂。</p>
                                 <p class="text-xs text-gray-600 mb-2"><strong>解决：</strong>电脑摄像定位堵塞在街管接口，直接使用高压水机清除油脂杂物，3 小时免挖街恢复排水。</p>
                                 <div class="flex gap-1 flex-wrap mb-2">
@@ -283,13 +256,16 @@
                         </div>
                     </div>
                 </div>
+                </div>
             </section>
 
             <!-- 服务3：水系统维修 -->
             <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <div class="flex items-center justify-between cursor-pointer p-2 -mx-2 rounded hover:bg-gray-50 active:bg-gray-100 transition" onclick="showService('s3')">
-                    <h2 id="s3" class="text-xl font-black mb-0 flex-1">三、水系统维修与更新</h2>
+                <div class="flex items-center justify-between cursor-pointer" onclick="toggleServiceContent('s3')">
+                    <h2 id="s3" class="text-xl font-black mb-0">三、水系统维修与更新</h2>
+                    <i id="icon-s3" class="fas fa-chevron-down transition-transform"></i>
                 </div>
+                <div id="content-s3" class="service-content">
                 <ul class="list-inside list-disc text-gray-600 space-y-2 mt-4">
                     <li>来水总开关维修与更换</li>
                     <li>水压异常与异常水费排查</li>
@@ -303,6 +279,13 @@
                             <article class="bg-gradient-to-br from-gray-50 to-white rounded-xl p-4 border border-gray-200 hover:shadow-lg transition-shadow">
                                 <p class="text-xs text-red-600 font-bold uppercase mb-1">真实案例</p>
                                 <h4 class="text-sm font-bold text-slate-800 mb-2">曼哈顿豪宅隐蔽漏水排查</h4>
+                                
+                                <!-- 施工视频 -->
+                                <video controls preload="metadata" playsinline class="w-full rounded-lg mb-3">
+                                    <source src="videos/疏通指甲店和足浴店管道.mp4" type="video/mp4">
+                                    您的浏览器不支持视频播放
+                                </video>
+                                
                                 <p class="text-xs text-gray-600 mb-2"><strong>问题：</strong>水费突然翻倍却找不到漏点，装修高端不敢随意拆墙。</p>
                                 <p class="text-xs text-gray-600 mb-2"><strong>解决：</strong>使用超声波与热成像交叉定位，仅拆一块瓷砖更换接头，保留全部装饰。</p>
                                 <div class="flex gap-1 flex-wrap mb-2">
@@ -342,13 +325,16 @@
                         </div>
                     </div>
                 </div>
+                </div>
             </section>
 
             <!-- 服务4：水泵/热水 & 暖气 -->
             <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <div class="flex items-center justify-between cursor-pointer p-2 -mx-2 rounded hover:bg-gray-50 active:bg-gray-100 transition" onclick="showService('s4')">
-                    <h2 id="s4" class="text-xl font-black mb-0 flex-1">四、水泵 / 热水炉 / 暖气系统</h2>
+                <div class="flex items-center justify-between cursor-pointer" onclick="toggleServiceContent('s4')">
+                    <h2 id="s4" class="text-xl font-black mb-0">四、水泵 / 热水炉 / 暖气系统</h2>
+                    <i id="icon-s4" class="fas fa-chevron-down transition-transform"></i>
                 </div>
+                <div id="content-s4" class="service-content">
                 <ul class="list-inside list-disc text-gray-600 space-y-2 mt-4">
                     <li>大型抽水泵安装、调试与维修</li>
                     <li>热水炉（Hot Water Heater）安装与更换</li>
@@ -401,13 +387,16 @@
                         </div>
                     </div>
                 </div>
+                </div>
             </section>
 
             <!-- 服务5：煤气管道检测 -->
-            <section id="s5" class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 md:col-span-2">
-                <div class="flex items-center justify-between cursor-pointer p-2 -mx-2 rounded hover:bg-gray-50 active:bg-gray-100 transition" onclick="showService('s5')">
-                    <h2 class="text-xl font-black mb-0 flex-1">五、煤气管道检测与维修（安全第一！）</h2>
+            <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 md:col-span-2">
+                <div class="flex items-center justify-between cursor-pointer" onclick="toggleServiceContent('s5')">
+                    <h2 id="s5" class="text-xl font-black mb-0">五、煤气管道检测与维修（安全第一！）</h2>
+                    <i id="icon-s5" class="fas fa-chevron-down transition-transform"></i>
                 </div>
+                <div id="content-s5" class="service-content">
                 <p class="text-gray-600 mb-3 mt-4">提供专业煤气管道安全检测、泄漏排查与合规维修，严格按安全规范施工，确保居住与商用场所安全。</p>
                 <ul class="list-inside list-disc text-gray-600 space-y-2">
                     <li>煤气管道完整性检查与压力测试</li>
@@ -421,6 +410,13 @@
                             <article class="bg-gradient-to-br from-gray-50 to-white rounded-xl p-4 border border-gray-200 hover:shadow-lg transition-shadow">
                                 <p class="text-xs text-red-600 font-bold uppercase mb-1">真实案例</p>
                                 <h4 class="text-sm font-bold text-slate-800 mb-2">曼哈顿烤箱煤气泄漏紧急排查</h4>
+                                
+                                <!-- 施工视频 -->
+                                <video controls preload="metadata" playsinline class="w-full rounded-lg mb-3">
+                                    <source src="videos/餐馆接煤气管道.mp4" type="video/mp4">
+                                    您的浏览器不支持视频播放
+                                </video>
+                                
                                 <p class="text-xs text-gray-600 mb-2"><strong>问题：</strong>业主闻到厨房有轻微的煤气味，但检测器没有显示。不确定是否真的泄漏，也不知道找谁。</p>
                                 <p class="text-xs text-gray-600 mb-2"><strong>解决：</strong>杨师傅用专业气体检测仪器进行全面排查，定位到烤箱进气接头处有微小泄漏。更换了接头和胶管，进行压力测试确认没有问题。</p>
                                 <div class="flex gap-1 flex-wrap mb-2">
@@ -460,6 +456,7 @@
                         </div>
                     </div>
                 </div>
+                </div>
             </section>
         </div>
 
@@ -481,17 +478,14 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- 案例 1 -->
-                <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow cursor-pointer" onclick="showCaseDetail('case-s1-1')">
+                <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow">
                     <div class="relative">
-                        <video preload="metadata" playsinline class="w-full h-56 object-cover">
+                        <video controls preload="metadata" playsinline class="w-full h-56 object-cover">
                             <source src="videos/来水维修.mp4" type="video/mp4">
                             您的浏览器不支持视频播放
                         </video>
                         <div class="absolute top-2 left-2">
                             <span class="bg-red-600 text-white text-xs px-2 py-1 rounded-full font-bold">🎥 实录视频</span>
-                        </div>
-                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                            <span class="bg-white text-red-600 px-6 py-3 rounded-full font-bold text-sm">🔍 点击查看详情</span>
                         </div>
                     </div>
                     <div class="p-6">
@@ -704,30 +698,6 @@
                 <p class="text-gray-600">安装 · 维修 · 更换 · 冬天不再寒冷</p>
             </div>
 
-            <!-- 视频展示区 -->
-            <div class="mb-8">
-                <div class="max-w-2xl mx-auto bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl p-6 border-2 border-red-200 hover:shadow-xl transition-shadow">
-                    <div class="flex items-center gap-2 mb-4">
-                        <span class="bg-red-600 text-white text-sm px-3 py-1.5 rounded-full font-bold">🎥 专业实录</span>
-                        <h3 class="text-lg font-bold text-slate-800">暖气炉配件更换全程</h3>
-                    </div>
-                    <video controls preload="metadata" playsinline class="w-full rounded-xl mb-4 shadow-lg">
-                        <source src="videos/换暖气炉配件.mp4" type="video/mp4">
-                        您的浏览器不支持视频播放
-                    </video>
-                    <p class="text-sm text-gray-700 mb-3 leading-relaxed">
-                        <strong>视频内容：</strong>展示暖气炉配件专业更换流程，包括检测、拆卸、安装、调试全过程。
-                        使用专业工具确保安全高效，让您了解我们的标准化服务流程。
-                    </p>
-                    <div class="flex gap-2 flex-wrap">
-                        <span class="bg-red-100 text-red-700 text-xs px-2 py-1 rounded-full font-semibold">暖气维修</span>
-                        <span class="bg-orange-100 text-orange-700 text-xs px-2 py-1 rounded-full font-semibold">配件更换</span>
-                        <span class="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded-full font-semibold">专业操作</span>
-                        <span class="bg-purple-100 text-purple-700 text-xs px-2 py-1 rounded-full font-semibold">安全保障</span>
-                    </div>
-                </div>
-            </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- 案例 1 -->
                 <div class="bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow">
@@ -737,14 +707,20 @@
                     <div class="p-6">
                         <p class="text-xs text-red-600 font-bold uppercase mb-1">真实案例</p>
                         <h3 class="text-lg font-bold text-slate-800 mb-3">布朗士暖气炉突然停止工作</h3>
-                        <p class="text-sm text-gray-600 mb-4 leading-relaxed"><strong>问题：</strong>1月严寒，暖气炉突然不工作，房间温度急剧下降。业主急坏了，打遍了紧急热线都排队很久。</p>
+                        
+                        <!-- 施工视频 -->
+                        <video controls preload="metadata" playsinline class="w-full rounded-lg mb-3">
+                            <source src="videos/换暖气炉配件.mp4" type="video/mp4">
+                            您的浏览器不支持视频播放
+                        </video>
+                        
                         <p class="text-sm text-gray-600 mb-4 leading-relaxed"><strong>问题：</strong>1月严寒，暖气炉突然不工作，房间温度急剧下降。业主急坏了，打遍了紧急热线都排队很久。</p>
                         <p class="text-sm text-gray-600 mb-4 leading-relaxed"><strong>解决：</strong>杨师傅40分钟内上门（比其他公司快得多），发现是电路故障 + 燃烧器积碳。清理积碳、更换点火器，暖气恢复正常。</p>
-                            <span class="bg-red-100 text-red-700 text-xs px-3 py-1 rounded-full font-semibold">快速上门</span>
-                            <span class="bg-orange-100 text-orange-700 text-xs px-3 py-1 rounded-full font-semibold">紧急维修</span>
+                        <div class="flex gap-2 flex-wrap mb-4">
                             <span class="bg-red-100 text-red-700 text-xs px-3 py-1 rounded-full font-semibold">快速上门</span>
                             <span class="bg-orange-100 text-orange-700 text-xs px-3 py-1 rounded-full font-semibold">紧急维修</span>
                             <span class="bg-yellow-100 text-yellow-700 text-xs px-3 py-1 rounded-full font-semibold">快速恢复</span>
+                        </div>
                         <p class="text-sm mb-4"><strong class="text-slate-800">客户反馈：</strong><span class="text-gray-600">⭐⭐⭐⭐⭐ "真的救了我的命！冬天没有暖气我真活不了。杨师傅的应急反应速度一流！"</span></p>
                     </div>
                 </div>
@@ -798,30 +774,6 @@
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-black text-slate-800 mb-2">煤气管道检测 & 维修案例</h2>
                 <p class="text-gray-600">安全第一 · 专业检测 · 合规维修</p>
-            </div>
-
-            <!-- 视频展示区 -->
-            <div class="mb-8">
-                <div class="max-w-2xl mx-auto bg-white rounded-2xl p-6 border-2 border-orange-200 hover:shadow-xl transition-shadow">
-                    <div class="flex items-center gap-2 mb-4">
-                        <span class="bg-orange-600 text-white text-sm px-3 py-1.5 rounded-full font-bold">🎥 施工实录</span>
-                        <h3 class="text-lg font-bold text-slate-800">餐馆煤气管道接驳</h3>
-                    </div>
-                    <video controls preload="metadata" playsinline class="w-full rounded-xl mb-4 shadow-lg">
-                        <source src="videos/餐馆接煤气管道.mp4" type="video/mp4">
-                        您的浏览器不支持视频播放
-                    </video>
-                    <p class="text-sm text-gray-700 mb-3 leading-relaxed">
-                        <strong>视频内容：</strong>展示餐馆煤气管道专业接驳全过程，严格遵守安全规范，使用专业工具和检测设备。
-                        包括管道连接、密封处理、压力测试、安全验收等关键步骤。
-                    </p>
-                    <div class="flex gap-2 flex-wrap">
-                        <span class="bg-orange-100 text-orange-700 text-xs px-2 py-1 rounded-full font-semibold">煤气接驳</span>
-                        <span class="bg-red-100 text-red-700 text-xs px-2 py-1 rounded-full font-semibold">安全规范</span>
-                        <span class="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded-full font-semibold">压力测试</span>
-                        <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full font-semibold">餐馆专业</span>
-                    </div>
-                </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -884,22 +836,6 @@
                         <p class="text-xs text-gray-500">📍 皇后区牙买加 | 2024年</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 案例视频：厨房疏通-->
-    <section id="case-kitchen" class="container mx-auto px-4 py-12">
-        <h3 class="text-2xl font-black mb-6 text-slate-800">案例实录：厨房主下水管疏通</h3>
-        <div class="max-w-3xl mx-auto bg-white p-4 rounded-lg shadow">
-            <video controls poster="images/first.png" class="w-full rounded">
-                <source src="videos/cocina.mp4" type="video/mp4">
-                您的浏览器不支持视频播放，请下载观看。
-            </video>
-            <p class="text-gray-600 mt-3">本视频展示厨房水槽与下水管疏通过程：清除油脂与食物残渣、恢复排水并做术后验收。</p>
-            <div class="mt-4 flex gap-3">
-                <a href="contact.html" class="bg-red-600 text-white px-4 py-2 rounded font-bold">立即预约</a>
-                <a href="#equipment" class="px-4 py-2 rounded border">查看使用设备</a>
             </div>
         </div>
     </section>
@@ -1109,41 +1045,6 @@
         </div>
     </div>
 
-    <!-- Service Detail Modal -->
-    <div id="serviceDetailModal">
-        <div class="bg-white rounded-2xl relative">
-            <button onclick="closeServiceDetail()" class="absolute top-4 right-4 text-gray-400 z-10"><i class="fas fa-times text-2xl"></i></button>
-            <div class="p-8 overflow-y-auto">
-                <div class="flex items-start gap-4 mb-6">
-                    <img id="serviceIcon" src="" class="w-20 h-20" alt="服务图标">
-                    <div>
-                        <h2 id="serviceTitle" class="text-2xl font-black mb-2"></h2>
-                        <p id="serviceShortDesc" class="text-gray-600 text-sm leading-relaxed hidden"></p>
-                    </div>
-                </div>
-                
-                <div id="serviceFeatures" class="mb-6 pb-6 border-b"></div>
-                
-                <div class="mb-6">
-                    <h3 class="font-bold text-lg mb-3 text-slate-800">服务项目详情</h3>
-                    <ul id="serviceItems" class="list-inside list-disc text-gray-600 space-y-2"></ul>
-                </div>
-                
-                <p id="serviceDesc" class="text-gray-600 mb-6 pb-6 border-b text-sm hidden"></p>
-                
-                <!-- 案例部分 -->
-                <div id="serviceCases" class="mb-6 hidden">
-                    <h3 class="font-bold text-lg mb-3 text-slate-800">💼 客户案例</h3>
-                    <div id="servicesCasesContent" class="grid grid-cols-1 gap-2 sm:gap-3"></div>
-                </div>
-                
-                <div class="flex gap-3 flex-wrap">
-                    <a href="tel:3477268777" class="flex-1 bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-xl font-bold text-center text-sm">📄 立即拨号</a>
-                    <button onclick="toggleQR(); closeServiceDetail();" class="flex-1 bg-gray-100 hover:bg-gray-200 px-4 py-3 rounded-xl font-bold text-sm">微信咨询</button>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- Detailed process moved here from index -->
     <section id="process" class="py-16 container mx-auto px-4 scroll-mt-24">
         <div class="text-center mb-6">
@@ -1195,15 +1096,15 @@
                         <i class="fas fa-chevron-down" id="serviceChevron"></i>
                     </button>
                     <div id="serviceSubmenu" class="hidden">
-                        <a href="javascript:void(0)" onclick="if(window.innerWidth < 768) { showService('s1'); } else { window.location.href='#s1'; } toggleMobileMenu(); return false;">来水/下水管维修</a>
-                        <a href="javascript:void(0)" onclick="if(window.innerWidth < 768) { showService('s2'); } else { window.location.href='#s2'; } toggleMobileMenu(); return false;">疏通 & 挖街换管</a>
-                        <a href="javascript:void(0)" onclick="if(window.innerWidth < 768) { showService('s3'); } else { window.location.href='#s3'; } toggleMobileMenu(); return false;">水系统维修</a>
-                        <a href="javascript:void(0)" onclick="if(window.innerWidth < 768) { showService('s4'); } else { window.location.href='#s4'; } toggleMobileMenu(); return false;">水泵/热水器/暖气</a>
-                        <a href="javascript:void(0)" onclick="if(window.innerWidth < 768) { showService('s5'); } else { window.location.href='#s5'; } toggleMobileMenu(); return false;">煤气管道检测</a>
+                        <a href="#s1" onclick="toggleMobileMenu();">来水/下水管维修</a>
+                        <a href="#s2" onclick="toggleMobileMenu();">疏通 & 挖街换管</a>
+                        <a href="#s3" onclick="toggleMobileMenu();">水系统维修</a>
+                        <a href="#s4" onclick="toggleMobileMenu();">水泵/热水器/暖气</a>
+                        <a href="#s5" onclick="toggleMobileMenu();">煤气管道检测</a>
                     </div>
                 </div>
-                <a href="javascript:void(0)" onclick="toggleMobileMenu(); setTimeout(() => { window.location.hash='equipment'; }, 100); return false;">专业设备</a>
-                <a href="javascript:void(0)" onclick="toggleMobileMenu(); setTimeout(() => { window.location.hash='process'; }, 100); return false;">服务流程</a>
+                <a href="#equipment" onclick="toggleMobileMenu();">专业设备</a>
+                <a href="#process" onclick="toggleMobileMenu();">服务流程</a>
                 <a href="blog.html" onclick="toggleMobileMenu()">博客</a>
                 <a href="contact.html" onclick="toggleMobileMenu()">联系我们</a>
             </div>
@@ -1218,175 +1119,11 @@
         </div>
     </footer>
 
-    <!-- Case Detail Modal -->
-    <div id="caseModal" class="fixed inset-0 bg-black/80 z-[100] hidden items-center justify-center p-4" onclick="closeCaseModal(event)">
-        <div class="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto relative" onclick="event.stopPropagation()">
-            <button onclick="closeCaseModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 z-10 bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
-                <i class="fas fa-times text-xl"></i>
-            </button>
-            
-            <div class="p-6">
-                <!-- 视频展示区 -->
-                <div id="caseVideo" class="mb-6 rounded-xl overflow-hidden"></div>
-                
-                <!-- 案例标题和描述 -->
-                <div id="caseContent"></div>
-            </div>
-        </div>
-    </div>
-
     <script src="js/main.js?v=20260120b"></script>
     
     <script>
         // 不做任何操作 - 案例已直接嵌入HTML中，自动显示
         function showCases(serviceId) {}
-
-        // 案例详情数据
-        const caseData = {
-            'case-s1-1': {
-                video: 'videos/来水维修.mp4',
-                title: '曼哈顿公寓主卧卫生间返水',
-                location: '曼哈顿上东城',
-                problem: '主卧卫生间每次冲厕所就返水，楼下住户已投诉多次。用管道疏通机试过多次都不行。',
-                solution: '杨师傅用电脑摄像内窥镜定位到3楼与4楼之间的主下水管内有油脂堆积 + 陶片碎裂，用高压水机清理 + 换管接头，共耗时2.5小时。',
-                tags: ['电脑摄像诊断', '高压水机', '换管接头'],
-                feedback: '⭐⭐⭐⭐⭐ "非常专业！一眼看出问题所在，效率高，价格也很公道，已向朋友推荐！"'
-            },
-            'case-s2-1': {
-                video: 'videos/更换厨房下水管道.mp4',
-                title: '厨房下水管道更换全过程',
-                location: '纽约',
-                problem: '厨房下水管道老化漏水，需要更换新管道。',
-                solution: '详细展示厨房下水管道拆除、更换、安装全流程，确保排水通畅无漏水。',
-                tags: ['管道更换', '厨房维修', '完整流程']
-            },
-            'case-s2-2': {
-                video: 'videos/疏通住家总排水管道.mp4',
-                title: '住家总排水管道疏通实录',
-                location: '纽约',
-                problem: '住宅总排水管道堵塞，导致排水不畅。',
-                solution: '展示使用专业疏通设备清理住宅总排水管道，快速恢复排水功能的全过程。',
-                tags: ['管道疏通', '住宅服务', '专业设备']
-            },
-            'case-s2-3': {
-                video: 'videos/疏通指甲店和足浴店管道.mp4',
-                title: '指甲店/足浴店管道疏通',
-                location: '纽约',
-                problem: '商业场所管道因高频使用导致堵塞。',
-                solution: '商业场所管道疏通服务，处理高频使用导致的堵塞问题，确保正常营业。',
-                tags: ['商业疏通', '快速响应', '营业保障']
-            }
-        };
-
-        // 显示案例详情
-        function showCaseDetail(caseId) {
-            const caseInfo = caseData[caseId];
-            if (!caseInfo) return;
-
-            const modal = document.getElementById('caseModal');
-            const videoContainer = document.getElementById('caseVideo');
-            const contentContainer = document.getElementById('caseContent');
-
-            // 设置视频
-            videoContainer.innerHTML = `
-                <video controls autoplay preload="metadata" playsinline class="w-full">
-                    <source src="${caseInfo.video}" type="video/mp4">
-                    您的浏览器不支持视频播放
-                </video>
-            `;
-
-            // 设置内容
-            let contentHTML = `
-                <h2 class="text-2xl font-black text-slate-800 mb-4">${caseInfo.title}</h2>
-            `;
-
-            if (caseInfo.problem) {
-                contentHTML += `
-                    <div class="mb-4">
-                        <h3 class="font-bold text-lg text-slate-800 mb-2">🔍 问题描述</h3>
-                        <p class="text-gray-600 leading-relaxed">${caseInfo.problem}</p>
-                    </div>
-                `;
-            }
-
-            if (caseInfo.solution) {
-                contentHTML += `
-                    <div class="mb-4">
-                        <h3 class="font-bold text-lg text-slate-800 mb-2">✅ 解决方案</h3>
-                        <p class="text-gray-600 leading-relaxed">${caseInfo.solution}</p>
-                    </div>
-                `;
-            }
-
-            if (caseInfo.tags && caseInfo.tags.length > 0) {
-                contentHTML += `
-                    <div class="mb-4">
-                        <div class="flex gap-2 flex-wrap">
-                            ${caseInfo.tags.map(tag => `
-                                <span class="bg-blue-100 text-blue-700 text-xs px-3 py-1.5 rounded-full font-semibold">${tag}</span>
-                            `).join('')}
-                        </div>
-                    </div>
-                `;
-            }
-
-            if (caseInfo.feedback) {
-                contentHTML += `
-                    <div class="mb-6 pb-6 border-b">
-                        <h3 class="font-bold text-lg text-slate-800 mb-2">💬 客户反馈</h3>
-                        <p class="text-gray-600">${caseInfo.feedback}</p>
-                    </div>
-                `;
-            }
-
-            if (caseInfo.location) {
-                contentHTML += `
-                    <p class="text-sm text-gray-500 mb-6">📍 ${caseInfo.location}</p>
-                `;
-            }
-
-            contentHTML += `
-                <div class="flex gap-3 flex-wrap">
-                    <a href="tel:3477268777" class="flex-1 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-xl font-bold text-center transition">
-                        📞 立即拨打 347-726-8777
-                    </a>
-                    <button onclick="toggleQR(); closeCaseModal();" class="flex-1 bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 rounded-xl font-bold transition">
-                        💬 微信咨询
-                    </button>
-                </div>
-            `;
-
-            contentContainer.innerHTML = contentHTML;
-
-            // 显示模态框
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            document.body.style.overflow = 'hidden';
-
-            // 滚动到顶部
-            setTimeout(() => {
-                const modalContent = modal.querySelector('.overflow-y-auto');
-                if (modalContent) {
-                    modalContent.scrollTop = 0;
-                }
-                window.scrollTo(0, 0);
-            }, 50);
-        }
-
-        // 关闭案例详情弹窗
-        function closeCaseModal(event) {
-            if (!event || event.target === event.currentTarget) {
-                const modal = document.getElementById('caseModal');
-                const videoContainer = document.getElementById('caseVideo');
-                
-                // 停止视频播放
-                videoContainer.innerHTML = '';
-                
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-                document.body.style.overflow = 'auto';
-            }
-        }
 
         // 设备详细信息数据
         const equipmentData = {
@@ -1641,7 +1378,6 @@
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeEquipmentModal();
-                closeCaseModal();
             }
         });
     </script>

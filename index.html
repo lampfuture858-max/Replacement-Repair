@@ -60,11 +60,11 @@
                         <i class="fas fa-chevron-down" id="serviceChevron"></i>
                     </button>
                     <div id="serviceSubmenu" class="hidden">
-                        <a href="javascript:void(0)" onclick="if(window.innerWidth < 768) { showService('s1'); } else { window.location.href='services.html#s1'; } toggleMobileMenu(); return false;">来水/下水管维修</a>
-                        <a href="javascript:void(0)" onclick="if(window.innerWidth < 768) { showService('s2'); } else { window.location.href='services.html#s2'; } toggleMobileMenu(); return false;">疏通 & 挖街换管</a>
-                        <a href="javascript:void(0)" onclick="if(window.innerWidth < 768) { showService('s3'); } else { window.location.href='services.html#s3'; } toggleMobileMenu(); return false;">水系统维修</a>
-                        <a href="javascript:void(0)" onclick="if(window.innerWidth < 768) { showService('s4'); } else { window.location.href='services.html#s4'; } toggleMobileMenu(); return false;">水泵/热水炉/暖气</a>
-                        <a href="javascript:void(0)" onclick="if(window.innerWidth < 768) { showService('s5'); } else { window.location.href='services.html#s5'; } toggleMobileMenu(); return false;">煤气管道检测</a>
+                        <a href="services.html#s1" onclick="toggleMobileMenu()">来水/下水管维修</a>
+                        <a href="services.html#s2" onclick="toggleMobileMenu()">疏通 & 挖街换管</a>
+                        <a href="services.html#s3" onclick="toggleMobileMenu()">水系统维修</a>
+                        <a href="services.html#s4" onclick="toggleMobileMenu()">水泵/热水炉/暖气</a>
+                        <a href="services.html#s5" onclick="toggleMobileMenu()">煤气管道检测</a>
                     </div>
                 </div>
                 <a href="services.html#equipment" onclick="toggleMobileMenu()">专业设备</a>
@@ -118,19 +118,19 @@
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <a href="services.html#cases-s1" class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-xl transition cursor-pointer group">
+            <a href="services.html#s1" class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-xl transition cursor-pointer group">
                 <img src="images/icon1.png" class="w-16 h-16 mb-6 group-hover:scale-110 transition-transform">
                 <h3 class="text-xl font-bold mb-3 group-hover:text-red-600 transition">管道疏通维修</h3>
                 <p class="text-gray-500 text-sm leading-relaxed mb-3">住宅、餐厅、商业大楼来水/下水管漏水、堵塞、换新问题一站式解决。</p>
                 <span class="text-xs text-red-600 font-bold">点击查看详情 →</span>
             </a>
-            <a href="services.html#cases-s4" class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-xl transition border-t-4 border-t-red-500 cursor-pointer group">
+            <a href="services.html#s4" class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-xl transition border-t-4 border-t-red-500 cursor-pointer group">
                 <img src="images/icon2.png" class="w-16 h-16 mb-6 group-hover:scale-110 transition-transform">
                 <h3 class="text-xl font-bold mb-3 group-hover:text-red-600 transition">暖气热水炉系统</h3>
                 <p class="text-gray-500 text-sm leading-relaxed mb-3">专业维修安装各种抽水泵、热水炉、暖气炉、煤气管道检测及更换。</p>
                 <span class="text-xs text-red-600 font-bold">点击查看详情 →</span>
             </a>
-            <a href="services.html#cases-s2" class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-xl transition cursor-pointer group">
+            <a href="services.html#s2" class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-xl transition cursor-pointer group">
                 <img src="images/icon3.png" class="w-16 h-16 mb-6 group-hover:scale-110 transition-transform">
                 <h3 class="text-xl font-bold mb-3 group-hover:text-red-600 transition">高压水机清洗</h3>
                 <p class="text-gray-500 text-sm leading-relaxed mb-3">针对餐厅、商业主管道，清理油脂、树根，泥沙等管道中垃圾，恢复管道畅通。</p>
@@ -213,36 +213,6 @@
             <img src="images/Wechat1.png" class="w-56 h-56 md:w-48 md:h-48 mx-auto mb-4 object-contain">
             <div class="mt-2">
                 <button onclick="copyWeChat()" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md font-bold">复制微信号 yw13829751079</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Service Detail Modal -->
-    <div id="serviceDetailModal">
-        <div class="bg-white rounded-2xl relative">
-            <button onclick="closeServiceDetail()" class="absolute top-4 right-4 text-gray-400 z-10"><i class="fas fa-times text-2xl"></i></button>
-            <div class="p-8 overflow-y-auto" style="max-height: calc(100vh - 4rem);">
-                <div class="flex items-start gap-4 mb-6">
-                    <img id="serviceIcon" src="" class="w-20 h-20" alt="服务图标">
-                    <div>
-                        <h2 id="serviceTitle" class="text-2xl font-black mb-2"></h2>
-                        <p id="serviceShortDesc" class="text-gray-600 text-sm leading-relaxed hidden"></p>
-                    </div>
-                </div>
-                
-                <div id="serviceFeatures" class="mb-6 pb-6 border-b"></div>
-                
-                <div class="mb-6">
-                    <h3 class="font-bold text-lg mb-3 text-slate-800">服务项目详情</h3>
-                    <ul id="serviceItems" class="list-inside list-disc text-gray-600 space-y-2"></ul>
-                </div>
-                
-                <p id="serviceDesc" class="text-gray-600 mb-6 pb-6 border-b text-sm hidden"></p>
-                
-                <div class="flex gap-3 flex-wrap">
-                    <a href="tel:3477268777" class="flex-1 bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-xl font-bold text-center text-sm">📋 立即拨号</a>
-                    <button onclick="toggleQR(); closeServiceDetail();" class="flex-1 bg-gray-100 hover:bg-gray-200 px-4 py-3 rounded-xl font-bold text-sm">微信咨询</button>
-                </div>
             </div>
         </div>
     </div>
