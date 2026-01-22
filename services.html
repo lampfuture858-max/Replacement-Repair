@@ -13,6 +13,11 @@
             scroll-behavior: smooth;
         }
         
+        /* 优化手机端视频加载 */
+        video {
+            will-change: transform;
+        }
+        
         #toggle-s1, #toggle-s2, #toggle-s3, #toggle-s4, #toggle-s5 { display: none !important; }
         #cases-s1-content, #cases-s2-content, #cases-s3-content, #cases-s4-content, #cases-s5-content { display: block !important; }
         #cases-s1-container, #cases-s2-container, #cases-s3-container, #cases-s4-container, #cases-s5-container { display: block !important; }
@@ -33,6 +38,28 @@
             scroll-margin-top: 100px;
         }
     </style>
+    <script>
+        // 视频懒加载：滚动到视口时才加载
+        document.addEventListener('DOMContentLoaded', function() {
+            const videos = document.querySelectorAll('video[preload="metadata"]');
+            
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const video = entry.target;
+                        video.load();
+                        videoObserver.unobserve(video);
+                    }
+                });
+            }, {
+                rootMargin: '50px'
+            });
+            
+            videos.forEach(video => {
+                videoObserver.observe(video);
+            });
+        });
+    </script>
 </head>
 <body class="bg-gray-50">
 
@@ -490,7 +517,7 @@
                 <!-- 案例 1 -->
                 <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow">
                     <div class="relative">
-                        <video controls preload="metadata" playsinline class="w-full h-56 object-cover">
+                        <video controls preload="none" playsinline class="w-full h-56 object-cover">
                             <source src="videos/来水维修.mp4" type="video/mp4">
                             您的浏览器不支持视频播放
                         </video>
@@ -901,7 +928,7 @@
             <!-- 设备2：高压水清洗机 -->
             <div class="bg-white rounded-xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition-shadow cursor-pointer group" onclick="showEquipmentDetail('pressure')">
                 <div class="relative h-48 bg-gradient-to-br from-green-50 to-teal-50 overflow-hidden">
-                    <video class="w-full h-full object-cover" muted loop onmouseover="this.play()" onmouseout="this.pause()">
+                    <video class="w-full h-full object-cover" muted loop preload="none" onmouseover="this.play()" onmouseout="this.pause()">
                         <source src="videos/下水管道.mp4" type="video/mp4">
                     </video>
                     <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
