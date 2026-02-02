@@ -14,35 +14,246 @@ body { font-family: 'Noto Sans SC', sans-serif; }
 	.qr-modal .max-w-sm { margin: 0 12px; }
 }
 
-/* Mobile menu overlay */
-.mobile-menu { display: none; position: fixed; inset: 0; z-index: 60; background: rgba(0,0,0,0.35); align-items: center; justify-content: center; }
-.mobile-menu.active { display: flex; }
-.mobile-menu .menu-panel { background: #ffffff; width: min(92%, 432px); max-height: 84vh; border-radius: 12px; padding: 1.5rem; padding-top: 4.2rem; box-shadow: 0 12px 32px rgba(2,6,23,0.25); position: relative; overflow: auto; transform: translateY(-3cm) scale(1.2); transform-origin: center top; }
-.mobile-menu .menu-links { display: flex; flex-direction: column; gap: 0; margin-top: 0.5rem; }
-.mobile-menu a { font-weight: 700; color: #0f172a; font-size: 1rem; display: block; padding: 1rem 0.75rem; transition: all 0.3s ease; border-radius: 8px; }
-.mobile-menu a:hover { background-color: #f1f5f9; color: #dc2626; }
-.mobile-menu .close-btn { position: absolute; right: 8px; top: 8px; background: transparent; border: none; cursor: pointer; padding: 4px 6px 4px 4px; z-index: 10; }
+/* Mobile menu overlay - 全新滑入式设计 */
+.mobile-menu { 
+	display: none; 
+	position: fixed; 
+	inset: 0; 
+	z-index: 60; 
+	background: rgba(0,0,0,0); 
+	transition: background 0.3s ease;
+}
+.mobile-menu.active { 
+	display: block; 
+	background: rgba(0,0,0,0.5);
+}
+.mobile-menu .menu-panel { 
+	background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+	width: 85%;
+	max-width: 360px;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	right: 0;
+	box-shadow: -8px 0 32px rgba(0,0,0,0.15);
+	overflow-y: auto;
+	transform: translateX(100%);
+	transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.mobile-menu.active .menu-panel {
+	transform: translateX(0);
+}
+.mobile-menu .menu-links { 
+	display: flex; 
+	flex-direction: column; 
+	gap: 0; 
+	margin-top: 1rem;
+	padding: 0 1rem 2rem 1rem;
+}
+.mobile-menu a { 
+	font-weight: 600; 
+	color: #1e293b; 
+	font-size: 1.05rem; 
+	display: flex;
+	align-items: center;
+	padding: 1.1rem 1rem; 
+	transition: all 0.25s ease; 
+	border-radius: 10px;
+	position: relative;
+}
+.mobile-menu a::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 4px;
+	height: 0;
+	background: #dc2626;
+	border-radius: 0 4px 4px 0;
+	transition: height 0.25s ease;
+}
+.mobile-menu a:active { 
+	background-color: #e2e8f0; 
+	transform: scale(0.98);
+}
+.mobile-menu a:active::before {
+	height: 60%;
+}
+/* 菜单激活状态 */
+.mobile-menu a.active {
+	background-color: #fef2f2;
+	color: #dc2626;
+	font-weight: 700;
+}
+.mobile-menu a.active::before {
+	height: 60%;
+}
+.mobile-menu a.active i {
+	color: #dc2626;
+}
+.mobile-menu .close-btn { 
+	position: absolute; 
+	left: 1rem; 
+	top: 1.2rem; 
+	background: #f1f5f9; 
+	border: none; 
+	cursor: pointer; 
+	padding: 0.6rem 0.7rem;
+	z-index: 10;
+	border-radius: 50%;
+	width: 42px;
+	height: 42px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.2s ease;
+}
+.mobile-menu .close-btn:hover {
+	background: #e2e8f0;
+}
+.mobile-menu .close-btn:active {
+	background: #cbd5e1;
+	transform: scale(0.95);
+}
 
-/* Mobile service menu item */
-.service-mobile-item { border-bottom: 1px solid #e2e8f0; }
-.service-mobile-item:last-child { border-bottom: none; }
-.service-mobile-item > button { width: 100%; text-align: left; padding: 1rem 0.75rem; font-weight: 700; color: #0f172a; font-size: 1rem; background: transparent; border: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; border-radius: 8px; transition: all 0.3s ease; -webkit-appearance: none; -moz-appearance: none; appearance: none; }
-.service-mobile-item > button:hover { background-color: #f1f5f9; color: #dc2626; }
-.service-mobile-item > button:active { background-color: #e2e8f0; }
-.service-mobile-item i { margin-left: 0.5rem; transition: transform 0.3s ease; pointer-events: none; }
-.service-mobile-item i.rotate { transform: rotate(180deg); }
+/* Mobile service menu item - 优化设计 */
+.service-mobile-item { 
+	margin-bottom: 0.25rem;
+}
+.service-mobile-item > button { 
+	width: 100%; 
+	text-align: left; 
+	padding: 1.1rem 1rem; 
+	font-weight: 600; 
+	color: #1e293b; 
+	font-size: 1.05rem; 
+	background: transparent; 
+	border: none; 
+	cursor: pointer; 
+	display: flex; 
+	align-items: center; 
+	justify-content: space-between; 
+	border-radius: 10px; 
+	transition: all 0.25s ease; 
+	-webkit-appearance: none; 
+	-moz-appearance: none; 
+	appearance: none;
+	position: relative;
+}
+.service-mobile-item > button::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 4px;
+	height: 0;
+	background: #dc2626;
+	border-radius: 0 4px 4px 0;
+	transition: height 0.25s ease;
+}
+.service-mobile-item > button:active { 
+	background-color: #e2e8f0;
+	transform: scale(0.98);
+}
+.service-mobile-item > button:active::before {
+	height: 60%;
+}
+.service-mobile-item > button.active {
+	background-color: #fef2f2;
+	color: #dc2626;
+	font-weight: 700;
+}
+.service-mobile-item > button.active::before {
+	height: 60%;
+}
+.service-mobile-item i { 
+	margin-left: 0.5rem; 
+	transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+	pointer-events: none;
+	color: #64748b;
+	font-size: 0.9rem;
+}
+.service-mobile-item i.rotate { 
+	transform: rotate(180deg);
+	color: #dc2626;
+}
 
-/* Service submenu styling */
-#serviceSubmenu { background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-left: 3px solid #dc2626; padding: 0.5rem 0 0.5rem 0; margin: 0.5rem 0 0 0; }
-#serviceSubmenu a { padding: 0.75rem 1rem 0.75rem 1.5rem; font-weight: 600; font-size: 0.95rem; color: #334155; display: block; transition: all 0.3s ease; }
-#serviceSubmenu a:hover { background-color: #e2e8f0; color: #dc2626; padding-left: 1.75rem; }
+/* Service submenu styling - 优化子菜单 */
+#serviceSubmenu { 
+	background: #f8fafc;
+	border-left: 3px solid #dc2626; 
+	padding: 0.5rem 0; 
+	margin: 0.25rem 0 0.5rem 0.5rem;
+	border-radius: 0 8px 8px 0;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), padding 0.35s ease;
+}
+#serviceSubmenu:not(.hidden) {
+	max-height: 500px;
+	padding: 0.5rem 0;
+}
+#serviceSubmenu a { 
+	padding: 0.85rem 1rem 0.85rem 1.5rem; 
+	font-weight: 500; 
+	font-size: 0.95rem; 
+	color: #475569; 
+	display: flex;
+	align-items: center;
+	transition: all 0.2s ease;
+	position: relative;
+}
+#serviceSubmenu a::before {
+	content: '•';
+	margin-right: 0.75rem;
+	color: #94a3b8;
+	font-size: 1.2rem;
+	transition: all 0.2s ease;
+}
+#serviceSubmenu a:active { 
+	background-color: #e2e8f0; 
+	color: #dc2626;
+	transform: translateX(4px);
+}
+#serviceSubmenu a:active::before {
+	color: #dc2626;
+	margin-right: 0.5rem;
+}
+#serviceSubmenu a.active {
+	background-color: #fef2f2;
+	color: #dc2626;
+	font-weight: 600;
+}
+#serviceSubmenu a.active::before {
+	color: #dc2626;
+}
 
 @media (max-width: 420px) {
-	.mobile-menu .menu-panel { width: calc(100% - 32px); padding: 1.2rem; border-radius: 10px; transform: translateY(-2cm) scale(1.05); }
-	.mobile-menu a { font-size: 0.95rem; padding: 0.9rem 0.6rem; }
-	.service-mobile-item > button { padding: 0.9rem 0.6rem; font-size: 0.95rem; }
-	#serviceSubmenu a { padding: 0.65rem 0.9rem 0.65rem 1.3rem; font-size: 0.9rem; }
-	.mobile-menu .menu-links { gap: 0; }
+	.mobile-menu .menu-panel { 
+		width: 90%;
+	}
+	.mobile-menu .menu-links {
+		padding: 0 0.75rem 2rem 0.75rem;
+	}
+	.mobile-menu a { 
+		font-size: 1rem; 
+		padding: 1rem 0.85rem; 
+	}
+	.service-mobile-item > button { 
+		padding: 1rem 0.85rem; 
+		font-size: 1rem; 
+	}
+	#serviceSubmenu a { 
+		padding: 0.75rem 0.85rem 0.75rem 1.25rem; 
+		font-size: 0.9rem; 
+	}
+	.mobile-menu .close-btn {
+		width: 38px;
+		height: 38px;
+		padding: 0.5rem;
+	}
 }
 
 /* Service dropdown menu */

@@ -1201,25 +1201,66 @@
 
     <div id="mobileMenu" class="mobile-menu">
         <div class="menu-panel">
-            <button class="close-btn" onclick="toggleMobileMenu()"><i class="fas fa-times text-2xl text-gray-700"></i></button>
+            <button class="close-btn" onclick="toggleMobileMenu()"><i class="fas fa-times text-xl text-gray-700"></i></button>
+            
+            <!-- 菜单头部 -->
+            <div style="padding: 5rem 1.5rem 1rem 1.5rem; border-bottom: 1px solid #e2e8f0;">
+                <div class="flex items-center gap-3 mb-4">
+                    <img src="images/logo.jpg" alt="昇通水电冷暖 Logo" class="h-14 w-14 rounded-lg shadow-sm">
+                    <div>
+                        <div class="text-lg font-bold text-slate-800">昇通水电冷暖</div>
+                        <div class="text-xs text-gray-500">Sheng Tong Plumbing</div>
+                    </div>
+                </div>
+                <a href="tel:3477268777" class="flex items-center gap-3 bg-red-600 text-white px-4 py-3 rounded-xl font-bold justify-center hover:bg-red-700 transition">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>347-726-8777</span>
+                </a>
+            </div>
+            
             <div class="menu-links">
                 <div class="service-mobile-item">
-                    <button type="button" onclick="toggleServiceSubmenu()" class="w-full flex items-center justify-between">
+                    <button type="button" onclick="toggleServiceSubmenu()">
                         <span>服务项目</span>
                         <i class="fas fa-chevron-down" id="serviceChevron"></i>
                     </button>
                     <div id="serviceSubmenu" class="hidden">
-                        <a href="#s1" onclick="toggleMobileMenu();">来水/下水管维修</a>
-                        <a href="#s2" onclick="toggleMobileMenu();">疏通 & 挖街换管</a>
-                        <a href="#s3" onclick="toggleMobileMenu();">水系统维修</a>
-                        <a href="#s4" onclick="toggleMobileMenu();">水泵/热水器/暖气</a>
-                        <a href="#s5" onclick="toggleMobileMenu();">煤气管道检测</a>
+                        <a href="#s1" onclick="closeMobileMenu(); setTimeout(highlightCurrentPage, 100);">来水/下水管维修</a>
+                        <a href="#s2" onclick="closeMobileMenu(); setTimeout(highlightCurrentPage, 100);">疏通 & 挖街换管</a>
+                        <a href="#s3" onclick="closeMobileMenu(); setTimeout(highlightCurrentPage, 100);">水系统维修</a>
+                        <a href="#s4" onclick="closeMobileMenu(); setTimeout(highlightCurrentPage, 100);">水泵/热水器/暖气</a>
+                        <a href="#s5" onclick="closeMobileMenu(); setTimeout(highlightCurrentPage, 100);">煤气管道检测</a>
                     </div>
                 </div>
-                <a href="#equipment" onclick="toggleMobileMenu();">专业设备</a>
-                <a href="#process" onclick="toggleMobileMenu();">服务流程</a>
-                <a href="blog.html" onclick="toggleMobileMenu()">博客</a>
-                <a href="contact.html" onclick="toggleMobileMenu()">联系我们</a>
+                <a href="#equipment" onclick="closeMobileMenu(); setTimeout(highlightCurrentPage, 100);">
+                    <i class="fas fa-tools text-gray-400 mr-3" style="width: 20px;"></i>
+                    <span>专业设备</span>
+                </a>
+                <a href="#process" onclick="closeMobileMenu(); setTimeout(highlightCurrentPage, 100);">
+                    <i class="fas fa-clipboard-list text-gray-400 mr-3" style="width: 20px;"></i>
+                    <span>服务流程</span>
+                </a>
+                <a href="blog.html" onclick="closeMobileMenu()">
+                    <i class="fas fa-book-open text-gray-400 mr-3" style="width: 20px;"></i>
+                    <span>博客</span>
+                </a>
+                <a href="contact.html" onclick="closeMobileMenu()">
+                    <i class="fas fa-envelope text-gray-400 mr-3" style="width: 20px;"></i>
+                    <span>联系我们</span>
+                </a>
+            </div>
+            
+            <!-- 菜单底部信息 -->
+            <div style="padding: 1.5rem; border-top: 1px solid #e2e8f0; margin-top: auto;">
+                <div class="text-xs text-gray-500 text-center mb-3">
+                    <p class="font-semibold text-gray-700 mb-1">营业时间</p>
+                    <p>24/7 全年无休 · 紧急服务</p>
+                </div>
+                <div class="flex justify-center gap-4 text-gray-400">
+                    <i class="fab fa-weixin text-2xl"></i>
+                    <i class="fab fa-cc-visa text-2xl"></i>
+                    <i class="fab fa-cc-mastercard text-2xl"></i>
+                </div>
             </div>
         </div>
     </div>

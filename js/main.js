@@ -8,7 +8,92 @@ function toggleQR() {
 function toggleMobileMenu() {
     var el = document.getElementById('mobileMenu');
     if (!el) return;
+    var isOpening = !el.classList.contains('active');
     el.classList.toggle('active');
+    
+    // 打开菜单时，先收起子菜单，然后根据当前页面决定是否展开
+    if (isOpening) {
+        resetMobileMenuState();
+        // 延迟一下再检查是否需要展开
+        setTimeout(function() {
+            checkAndExpandActiveService();
+        }, 50);
+    }
+}
+
+// 强制关闭菜单
+function closeMobileMenu() {
+    var el = document.getElementById('mobileMenu');
+    if (el && el.classList.contains('active')) {
+        el.classList.remove('active');
+    }
+}
+
+// 点击遮罩层关闭菜单
+document.addEventListener('DOMContentLoaded', function() {
+    var mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenu) {
+        mobileMenu.addEventListener('click', function(e) {
+            // 如果点击的是遮罩层本身（不是菜单面板）
+            if (e.target === mobileMenu) {
+                toggleMobileMenu();
+            }
+        });
+    }
+    
+    // 高亮当前页面的菜单项
+    highlightCurrentPage();
+    
+    // 监听hash变化（用于services.html页面内的锚点跳转）
+    window.addEventListener('hashchange', function() {
+        highlightCurrentPage();
+    });
+});
+
+// 根据当前页面URL和hash高亮对应的菜单项
+function highlightCurrentPage() {
+    var currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    var currentHash = window.location.hash;
+    
+    // 移除所有激活状态
+    document.querySelectorAll('.mobile-menu a, .service-mobile-item > button').forEach(function(item) {
+        item.classList.remove('active');
+    });
+    
+    // 高亮对应的菜单项
+    if (currentPage === 'index.html' || currentPage === '') {
+        // 首页不高亮任何菜单项，或者可以添加一个首页链接
+    } else if (currentPage === 'services.html') {
+        var serviceBtn = document.querySelector('.service-mobile-item > button');
+        if (serviceBtn) {
+            serviceBtn.classList.add('active');
+        }
+        
+        // 如果有hash，高亮对应的子菜单项
+        if (currentHash) {
+            var submenuLinks = document.querySelectorAll('#serviceSubmenu a');
+            submenuLinks.forEach(function(link) {
+                if (link.getAttribute('href').includes(currentHash)) {
+                    link.classList.add('active');
+                }
+            });
+        }
+    } else if (currentPage === 'blog.html') {
+        var blogLinks = document.querySelectorAll('.mobile-menu a[href*="blog.html"]');
+        blogLinks.forEach(function(link) { link.classList.add('active'); });
+    } else if (currentPage === 'contact.html') {
+        var contactLinks = document.querySelectorAll('.mobile-menu a[href*="contact.html"]');
+        contactLinks.forEach(function(link) { link.classList.add('active'); });
+    }
+    
+    // 处理带hash的情况（专业设备、服务流程等）
+    if (currentHash === '#equipment') {
+        var equipmentLinks = document.querySelectorAll('.mobile-menu a[href*="#equipment"]');
+        equipmentLinks.forEach(function(link) { link.classList.add('active'); });
+    } else if (currentHash === '#process') {
+        var processLinks = document.querySelectorAll('.mobile-menu a[href*="#process"]');
+        processLinks.forEach(function(link) { link.classList.add('active'); });
+    }
 }
 
 function toggleServiceSubmenu() {
@@ -21,6 +106,46 @@ function toggleServiceSubmenu() {
             chevron.classList.remove('rotate');
         } else {
             chevron.classList.add('rotate');
+        }
+    }
+}
+
+// 在打开移动菜单时重置子菜单状态
+function resetMobileMenuState() {
+    var submenu = document.getElementById('serviceSubmenu');
+    var chevron = document.getElementById('serviceChevron');
+    if (submenu && !submenu.classList.contains('hidden')) {
+        submenu.classList.add('hidden');
+        if (chevron) {
+            chevron.classList.remove('rotate');
+        }
+    }
+}
+
+// 检查是否有激活的服务项，如果有则自动展开
+function checkAndExpandActiveService() {
+    var currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    var currentHash = window.location.hash;
+    
+    // 如果在服务页面且有hash（具体服务），或者服务按钮/子菜单项有激活状态，则展开
+    var shouldExpand = false;
+    
+    if (currentPage === 'services.html' && currentHash) {
+        shouldExpand = true;
+    }
+    
+    // 检查是否有激活的子菜单项
+    var activeSubmenuItem = document.querySelector('#serviceSubmenu a.active');
+    if (activeSubmenuItem) {
+        shouldExpand = true;
+    }
+    
+    if (shouldExpand) {
+        var submenu = document.getElementById('serviceSubmenu');
+        var chevron = document.getElementById('serviceChevron');
+        if (submenu && submenu.classList.contains('hidden')) {
+            submenu.classList.remove('hidden');
+            if (chevron) chevron.classList.add('rotate');
         }
     }
 }
